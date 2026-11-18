@@ -79,12 +79,6 @@ export const AlertIcon = (p: P) => (
 export const DoneBadge = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 18 18" fill="none" aria-hidden="true">
     <circle cx="9" cy="9" r="9" className="fill-accent" />
-    <path
-      d="M5.5 9.3 7.8 11.5 12.5 6.6"
-      stroke="#fff"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M5.5 9.3 7.8 11.5 12.5 6.6" stroke="#fff" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )

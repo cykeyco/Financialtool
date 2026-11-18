@@ -32,7 +32,12 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, onFinish
         <DoneBadge size={36} />
       </motion.span>
       <div className="flex flex-col gap-1">
-        <h2 id="done-title" ref={heading} tabIndex={-1} className="text-[22px] font-semibold tracking-tight outline-none">
+        <h2
+          id="done-title"
+          ref={heading}
+          tabIndex={-1}
+          className="text-[22px] font-semibold tracking-tight outline-none"
+        >
           {imported} transactions imported
         </h2>
         <p className="text-muted">Your overview and budget are updated.</p>
@@ -65,8 +70,16 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, onFinish
 export function UndoneStep({ removed, onRestart }: { removed: number; onRestart: () => void }) {
   const heading = useFocusOnMount<HTMLHeadingElement>()
   return (
-    <section aria-labelledby="undone-title" className="flex max-w-xl flex-col gap-4 rounded-2xl border border-line p-10">
-      <h2 id="undone-title" ref={heading} tabIndex={-1} className="text-[22px] font-semibold tracking-tight outline-none">
+    <section
+      aria-labelledby="undone-title"
+      className="flex max-w-xl flex-col gap-4 rounded-2xl border border-line p-10"
+    >
+      <h2
+        id="undone-title"
+        ref={heading}
+        tabIndex={-1}
+        className="text-[22px] font-semibold tracking-tight outline-none"
+      >
         Import undone
       </h2>
       <p className="text-muted">

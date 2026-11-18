@@ -1,10 +1,15 @@
-# Import data — AI review prototype
+# Household — finance tool prototype
 
-A clickable prototype of a bank-import flow where an AI matches columns, flags
-possible duplicates and suggests categories, and the user reviews anything
-uncertain before import.
+A working prototype of a household finance tool with five pages:
 
-**Flow:** Upload → AI analysis → Review (column mapping + review queue) → Imported → Undo
+- **Overview** — net worth and its trend, this month in four numbers, assets, budget, retirement goal
+- **Monthly entry** — update account balances and income; totals and the summary update live
+- **Budget** — what's left, per-category budgets with an editor, savings goals kept separate
+- **Retirement** — live projection in today's money, on-track verdict, what-if scenarios
+- **Import data** — an AI matches columns, flags duplicates and suggests categories; the user reviews anything uncertain
+
+Pages share one data store, so a change in one shows up everywhere (edit a budget → Overview updates).
+Edits are remembered in the browser (localStorage). Clear site data to get the sample data back.
 
 All data is fictional and hard-coded in `src/data/mockData.ts`. Nothing is parsed or saved.
 
@@ -33,6 +38,12 @@ React 19 · TypeScript · Tailwind CSS v4 · Motion (animations) · Vite
 | Path | What |
 | --- | --- |
 | `src/index.css` | Design tokens: colours, fonts, tabular numbers |
+| `src/App.tsx` | Page routing (#overview, #monthly, #budget, #retirement, #import) |
+| `src/state/household.tsx` | Shared household data, sample numbers, derived totals |
+| `src/pages/*.tsx` | One file per page |
+| `src/components/ui.tsx` | Page header, fields, progress bar, stat |
+| `src/components/LineChart.tsx` | Line chart used on Overview and Retirement |
+| `src/lib/retirement.ts` | Retirement projection maths |
 | `src/data/mockData.ts` | File, columns, duplicates, categories, AI reasoning text |
 | `src/state/importFlow.ts` | Flow state (reducer), fake analysis timing, derived counts |
 | `src/steps/UploadStep.tsx` | Drop zone + sample files (clean / with problems) |
@@ -40,7 +51,7 @@ React 19 · TypeScript · Tailwind CSS v4 · Motion (animations) · Vite
 | `src/steps/review/MappingPanel.tsx` | Column mapping with confidence and “why” |
 | `src/steps/review/ReviewQueue.tsx` | Duplicates and categories, accept all, single-step undo |
 | `src/steps/ResultSteps.tsx` | Imported summary and undone state |
-| `src/App.tsx` | Page shell, stepper, screen transitions, sticky footer |
+| `src/pages/ImportPage.tsx` | Import flow: stepper, screen transitions, sticky footer |
 
 ## Design rules built in
 

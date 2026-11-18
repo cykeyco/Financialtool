@@ -3,12 +3,7 @@ import type { ReactNode } from 'react'
 import { AnimatedNumber } from '../../components/AnimatedNumber'
 import { Button } from '../../components/Button'
 import { CheckIcon, DoneBadge } from '../../components/icons'
-import {
-  REVIEW_ITEMS,
-  formatAmount,
-  type CategoryItem,
-  type DuplicateItem,
-} from '../../data/mockData'
+import { REVIEW_ITEMS, formatAmount, type CategoryItem, type DuplicateItem } from '../../data/mockData'
 
 type Props = {
   duplicates: DuplicateItem[]

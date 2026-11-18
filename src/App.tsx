@@ -1,98 +1,58 @@
 import { AnimatePresence, MotionConfig, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { AppShell } from './components/AppShell'
-import { Button } from './components/Button'
-import { Stepper } from './components/Stepper'
-import { CATEGORY_ITEMS } from './data/mockData'
-import { useImportFlow, type Screen } from './state/importFlow'
-import { AnalyzingStep } from './steps/AnalyzingStep'
-import { DoneStep, UndoneStep } from './steps/ResultSteps'
-import { ReviewStep } from './steps/ReviewStep'
-import { UploadStep } from './steps/UploadStep'
+import { useHashRoute, type Route } from './components/useHashRoute'
+import { BudgetPage } from './pages/BudgetPage'
+import { ImportPage } from './pages/ImportPage'
+import { MonthlyEntryPage } from './pages/MonthlyEntryPage'
+import { OverviewPage } from './pages/OverviewPage'
+import { RetirementPage } from './pages/RetirementPage'
+import { HouseholdProvider } from './state/household'
 
-const STEP_INDEX: Record<Screen, number> = { upload: 0, analyzing: 0, review: 1, done: 3, undone: 3 }
+const TITLES: Record<Route, string> = {
+  overview: 'Overview',
+  monthly: 'Monthly entry',
+  budget: 'Budget',
+  retirement: 'Retirement',
+  import: 'Import data',
+}
 
 export default function App() {
-  const flow = useImportFlow()
-  const { state, derived, actions } = flow
-  // Don't steal focus on first page load; do move it when the user comes back to upload.
-  const [hasStarted, setHasStarted] = useState(false)
-  const start: typeof actions.start = (file) => {
-    setHasStarted(true)
-    actions.start(file)
-  }
+  const route = useHashRoute()
+
+  useEffect(() => {
+    document.title = `${TITLES[route]} — Household`
+  }, [route])
 
   return (
     <MotionConfig reducedMotion="user">
-      <AppShell>
-        <div className="flex-1 px-6 pt-10 pb-12 md:px-12">
-          <div className="mx-auto flex max-w-[1120px] flex-col gap-8">
-            <header className="flex flex-col gap-1">
-              <h1 className="text-[28px] leading-tight font-semibold tracking-[-0.02em]">Import data</h1>
-              <p className="text-muted">Bring in transactions from a bank export. Nothing is saved until you confirm.</p>
-            </header>
-
-            <Stepper current={STEP_INDEX[state.screen]} />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={state.screen}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.2, ease: 'easeOut' }}
-              >
-                {state.screen === 'upload' && <UploadStep onStart={start} focus={hasStarted} />}
-                {state.screen === 'analyzing' && (
-                  <AnalyzingStep file={state.file} steps={derived.steps} progress={state.progress} />
-                )}
-                {state.screen === 'review' && <ReviewStep flow={flow} />}
-                {state.screen === 'done' && (
-                  <DoneStep
-                    imported={derived.importCount}
-                    skipped={derived.skippedDuplicates}
-                    unreadable={derived.unreadable}
-                    rulesLearned={CATEGORY_ITEMS.length}
-                    onFinish={actions.reset}
-                    onUndo={actions.undo}
-                  />
-                )}
-                {state.screen === 'undone' && (
-                  <UndoneStep removed={derived.importCount} onRestart={actions.reset} />
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        <AnimatePresence>
-          {state.screen === 'review' && (
-            <motion.footer
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="sticky bottom-0 border-t border-line bg-white/95 px-6 py-4 backdrop-blur md:px-12"
+      <HouseholdProvider>
+        <AppShell route={route}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={route}
+              className="flex flex-1 flex-col"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
             >
-              <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3">
-                <p className="text-[13px] text-muted" aria-live="polite">
-                  {derived.pending > 0
-                    ? `Review ${derived.pending} ${derived.pending === 1 ? 'item' : 'items'} to continue. Nothing is saved until you import.`
-                    : 'Ready. You can undo this import for 30 days.'}
-                </p>
-                <div className="flex gap-2">
-                  <Button variant="secondary" onClick={actions.reset}>
-                    Back
-                  </Button>
-                  <Button disabled={derived.pending > 0} onClick={actions.importNow}>
-                    Import {derived.importCount} transactions
-                  </Button>
+              {route === 'import' ? (
+                <ImportPage />
+              ) : (
+                <div className="flex-1 px-6 pt-10 pb-16 md:px-12">
+                  <div className="mx-auto max-w-[1120px]">
+                    {route === 'overview' && <OverviewPage />}
+                    {route === 'monthly' && <MonthlyEntryPage />}
+                    {route === 'budget' && <BudgetPage />}
+                    {route === 'retirement' && <RetirementPage />}
+                  </div>
                 </div>
-              </div>
-            </motion.footer>
-          )}
-        </AnimatePresence>
-      </AppShell>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </AppShell>
+      </HouseholdProvider>
     </MotionConfig>
   )
 }
