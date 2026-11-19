@@ -31,10 +31,11 @@
   --color-danger-bg: #fdf1f0;
 
   /* Flow: used only where money is moving or the agent is at work. */
-  --color-flow-blue: #3d4bff;
-  --color-flow-violet: #8e7bff;
-  --color-flow-pink: #e24bd6;
-  --color-flow-mist: #c9d0ff;
+  /* Built from the existing palette: accent green, asset sage, budget amber. */
+  --color-flow-green: #2e6a53;
+  --color-flow-sage: #5e9a80;
+  --color-flow-amber: #c27a00;
+  --color-flow-mist: #a9cbbb;
 }
 
 @layer base {
@@ -46,7 +47,7 @@
     @apply bg-backdrop text-ink font-sans text-sm;
   }
   :focus-visible {
-    outline: 2px solid var(--color-flow-violet);
+    outline: 2px solid var(--color-flow-sage);
     outline-offset: 2px;
   }
 }
@@ -55,15 +56,15 @@
    Rule: gradient means money in motion or AI at work. Data surfaces stay neutral. */
 @layer components {
   .flow-line {
-    background: linear-gradient(90deg, var(--color-flow-blue), var(--color-flow-violet) 55%, var(--color-flow-pink));
+    background: linear-gradient(90deg, var(--color-flow-green), var(--color-flow-sage) 55%, var(--color-flow-amber));
   }
   .flow-conic {
     background: conic-gradient(
       from 0deg,
-      var(--color-flow-blue),
-      var(--color-flow-violet),
-      var(--color-flow-pink),
-      var(--color-flow-blue)
+      var(--color-flow-green),
+      var(--color-flow-sage),
+      var(--color-flow-amber),
+      var(--color-flow-green)
     );
   }
   /* Outline drawn with the flow gradient: marks an option the agent suggests. */
@@ -71,7 +72,7 @@
     border: 1.5px solid transparent;
     background:
       linear-gradient(#fff, #fff) padding-box,
-      linear-gradient(90deg, var(--color-flow-blue), var(--color-flow-violet) 55%, var(--color-flow-pink)) border-box;
+      linear-gradient(90deg, var(--color-flow-green), var(--color-flow-sage) 55%, var(--color-flow-amber)) border-box;
   }
 
   .flow-field {
@@ -94,7 +95,7 @@
     height: 380px;
     right: 4%;
     top: 6%;
-    background: radial-gradient(circle, #3d4bff 0, rgb(61 75 255 / 0.55) 40%, transparent 70%);
+    background: radial-gradient(circle, #2e6a53 0, rgb(46 106 83 / 0.55) 40%, transparent 70%);
     animation: flow-d1 14s ease-in-out infinite alternate;
   }
   .flow-b2 {
@@ -102,7 +103,7 @@
     height: 300px;
     right: 22%;
     top: 40%;
-    background: radial-gradient(circle, #8e7bff 0, rgb(142 123 255 / 0.5) 45%, transparent 70%);
+    background: radial-gradient(circle, #5e9a80 0, rgb(94 154 128 / 0.5) 45%, transparent 70%);
     animation: flow-d2 17s ease-in-out infinite alternate;
   }
   .flow-b3 {
@@ -110,7 +111,7 @@
     height: 260px;
     right: -4%;
     top: 52%;
-    background: radial-gradient(circle, #e24bd6 0, rgb(226 75 214 / 0.45) 45%, transparent 70%);
+    background: radial-gradient(circle, #c27a00 0, rgb(194 122 0 / 0.45) 45%, transparent 70%);
     animation: flow-d3 12s ease-in-out infinite alternate;
   }
   .flow-b4 {
@@ -118,7 +119,7 @@
     height: 300px;
     right: 30%;
     top: -12%;
-    background: radial-gradient(circle, #c9d0ff 0, transparent 68%);
+    background: radial-gradient(circle, #a9cbbb 0, transparent 68%);
     animation: flow-d2 19s ease-in-out infinite alternate-reverse;
   }
   /* Keeps the text side of the card clean. */

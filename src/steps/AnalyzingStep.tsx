@@ -38,7 +38,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
           <p className="flex items-center gap-1.5 text-[13px] text-muted" aria-live="polite">
             <span
               aria-hidden="true"
-              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-flow-violet'}`}
+              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-flow-sage'}`}
             />
             {status} · {file.rows} rows
           </p>
