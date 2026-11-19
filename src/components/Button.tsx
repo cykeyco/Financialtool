@@ -3,23 +3,23 @@ import type { ButtonHTMLAttributes } from 'react'
 /**
  * Button hierarchy
  *
- * primary   — Level 1. The one action that moves the task forward (Import, Add entry, Accept all).
- *             At most one per view or per card. Blind Forest on White Chalk.
+ * primary   — Level 1. The one action that moves the task forward (Import, Add entry, Skip this row).
+ *             At most one per view or per card. Lime fill, near-black text (16:1).
  * secondary — Level 2. Alternatives that sit beside a primary (Back, Keep both, Undo import).
- *             Radiant Dawn fill, Blind Forest text.
- * ghost     — Level 3. Low-emphasis tools inside a section. Text only, Dawn on hover.
- * link      — Inline navigation inside a sentence or a section header. Kyuri Green, underlined.
+ *             Raised dark fill with a hairline, light text (12:1).
+ * ghost     — Level 3. Low-emphasis tools inside a section. Text only, faint fill on hover.
+ * link      — Inline navigation inside a sentence or a section header. Lime, underlined.
  */
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'link'
 type Size = 'sm' | 'md'
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    'bg-forest text-chalk hover:bg-kyuri active:bg-[#1a2600] disabled:bg-forest/25 disabled:text-chalk disabled:cursor-not-allowed',
+    'bg-lime text-black hover:bg-accent-strong active:bg-[#c9ea6e] disabled:bg-lime/15 disabled:text-lime/50 disabled:cursor-not-allowed',
   secondary:
-    'bg-dawn text-forest hover:bg-[#e3d5b8] active:bg-line-strong disabled:bg-line-soft disabled:text-faint disabled:cursor-not-allowed',
-  ghost: 'bg-transparent text-ink-2 hover:bg-dawn/60 hover:text-ink',
-  link: 'bg-transparent text-kyuri underline underline-offset-3 decoration-kyuri/30 hover:decoration-kyuri !px-0 !h-auto !rounded-none',
+    'bg-raised text-ink shadow-[inset_0_0_0_1px_var(--color-line-strong)] hover:bg-[#3a3a3a] active:bg-line-strong disabled:bg-line-soft disabled:text-faint disabled:cursor-not-allowed',
+  ghost: 'bg-transparent text-ink-2 hover:bg-raised hover:text-ink',
+  link: 'bg-transparent text-lime underline underline-offset-3 decoration-lime/35 hover:decoration-lime !px-0 !h-auto !rounded-none',
 }
 const sizes: Record<Size, string> = {
   sm: 'h-8 px-3.5 text-[13px]',

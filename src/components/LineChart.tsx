@@ -79,8 +79,8 @@ export function LineChart({ points, ariaLabel, formatAxis, height = 240, target,
               </text>
             </g>
           )}
-          <path d={area} fill="var(--color-kyuri)" fillOpacity={0.07} />
-          <path d={line} fill="none" stroke="var(--color-kyuri)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+          <path d={area} fill="var(--color-lime)" fillOpacity={0.06} />
+          <path d={line} fill="none" stroke="var(--color-lime)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
           {points.map((p, i) =>
             i % every === 0 || i === last ? (
               <text
@@ -101,10 +101,10 @@ export function LineChart({ points, ariaLabel, formatAxis, height = 240, target,
             x2={x(last)}
             y1={y(points[last].value)}
             y2={y(min)}
-            stroke="var(--color-kyuri)"
+            stroke="var(--color-lime)"
             strokeDasharray="2 3"
           />
-          <circle cx={x(last)} cy={y(points[last].value)} r={4.5} fill="#fff" stroke="var(--color-kyuri)" strokeWidth={2} />
+          <circle cx={x(last)} cy={y(points[last].value)} r={4.5} fill="var(--color-panel)" stroke="var(--color-lime)" strokeWidth={2} />
           {endLabel && (
             <text
               x={x(last) - 10}

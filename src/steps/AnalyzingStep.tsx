@@ -26,7 +26,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
   return (
     <section
       aria-labelledby="analyzing-title"
-      className="relative grid min-h-[380px] overflow-hidden rounded-[20px] bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)] md:grid-cols-2"
+      className="relative grid min-h-[380px] overflow-hidden rounded-[20px] bg-white shadow-[0_0_0_1px_rgb(255_255_255/0.06)] md:grid-cols-2"
     >
       <FlowField phase={Math.min(progress, steps.length)} settled={finished} />
 
@@ -38,7 +38,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
           <p className="flex items-center gap-1.5 text-[13px] text-muted" aria-live="polite">
             <span
               aria-hidden="true"
-              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-sneeze'}`}
+              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-violet'}`}
             />
             {status} · {file.rows} rows
           </p>

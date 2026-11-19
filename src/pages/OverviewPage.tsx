@@ -5,7 +5,7 @@ import { go } from '../components/useHashRoute'
 import { compact, num, pct, sek, sekDelta } from '../lib/format'
 import { DAYS_LEFT_IN_MONTH, INVESTMENT_RETURN, NET_WORTH_HISTORY, useHousehold } from '../state/household'
 
-const ALLOC_COLORS = ['#223300', '#4b5d16', '#f2b635', '#d6cdb9'] // forest, kyuri, sneezeweed, sand
+const ALLOC_COLORS = ['#defd89', '#9280f7', '#eb9659', '#5c5c58'] // lime, violet, orange, grey
 
 export function OverviewPage() {
   const { state, d } = useHousehold()

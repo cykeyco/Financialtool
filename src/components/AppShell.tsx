@@ -18,7 +18,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
         className="flex shrink-0 flex-col gap-8 px-4 py-6 md:sticky md:top-0 md:h-screen md:w-58"
       >
         <a href="#overview" className="flex items-center gap-2.5 px-2 text-ink">
-          <span aria-hidden="true" className="flex size-6 items-center justify-center rounded-md bg-ink text-white">
+          <span aria-hidden="true" className="flex size-6 items-center justify-center rounded-md bg-lime text-black">
             <HomeIcon />
           </span>
           <span className="text-[15px] font-semibold tracking-tight">Household</span>
@@ -33,7 +33,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
                   aria-current={current ? 'page' : undefined}
                   className={`flex min-h-9 items-center gap-2.5 rounded-lg px-2.5 py-2 transition-colors ${
                     current
-                      ? 'bg-white font-medium text-ink shadow-[0_1px_2px_rgb(0_0_0/0.04)]'
+                      ? 'bg-white font-medium text-ink shadow-[0_0_0_1px_rgb(255_255_255/0.06)]'
                       : 'text-ink-2 hover:bg-white/60 hover:text-ink'
                   }`}
                 >

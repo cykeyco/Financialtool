@@ -20,7 +20,7 @@ export function BudgetPage() {
         description="What you plan to spend each month, and what you are saving towards."
         actions={
           <>
-            <span className="inline-flex h-10 items-center rounded-lg border border-line px-3 font-medium">
+            <span className="inline-flex h-10 items-center rounded-full border border-line-strong px-4 font-medium">
               {state.month}
             </span>
             <Button onClick={() => setEditing({ mode: 'new' })}>Add category</Button>
