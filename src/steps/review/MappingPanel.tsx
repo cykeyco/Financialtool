@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { Button } from '../../components/Button'
+import { AgentNote, AiOrb } from '../../components/Flow'
 import { ArrowRightIcon, CheckIcon, ChevronDownIcon } from '../../components/icons'
 import { AUTO_MAPPINGS, UNCERTAIN_MAPPING } from '../../data/mockData'
 import type { MappingChoice } from '../../state/importFlow'
@@ -20,13 +21,14 @@ export function MappingPanel({
   return (
     <section aria-labelledby="mapping-title" className="flex flex-col gap-3">
       <div className="flex items-baseline justify-between">
-        <h3 id="mapping-title" className="text-[15px] font-semibold">
+        <h3 id="mapping-title" className="flex items-center gap-2 text-[15px] font-semibold">
+          <AiOrb />
           Column mapping
         </h3>
         <span className="text-[13px] text-muted">Select a row to see why</span>
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-line">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)]">
         <div className={`${ROW} border-b border-line bg-canvas px-4 py-2.5 text-xs text-muted`}>
           <span>In your file</span>
           <span />
@@ -65,7 +67,9 @@ export function MappingPanel({
                     transition={{ duration: 0.2, ease: 'easeOut' }}
                     className="overflow-hidden px-4 text-[13px] text-ink-2"
                   >
-                    <span className="block pb-3.5">{m.reason}</span>
+                    <span className="block pb-3.5">
+                      <AgentNote>{m.reason}</AgentNote>
+                    </span>
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -90,10 +94,10 @@ export function MappingPanel({
                 </span>
                 <span />
               </div>
-              <p className="text-[13px] text-ink-2">
+              <AgentNote>
                 {UNCERTAIN_MAPPING.reason} Suggested field:{' '}
                 <strong className="font-semibold text-ink">{UNCERTAIN_MAPPING.suggestedField}</strong>.
-              </p>
+              </AgentNote>
               <div className="flex flex-wrap gap-2">
                 <Button size="sm" onClick={() => onChoose('use-suggestion')}>
                   Use “{UNCERTAIN_MAPPING.suggestedField}”

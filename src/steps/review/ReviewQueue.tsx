@@ -2,7 +2,8 @@ import { AnimatePresence, motion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { AnimatedNumber } from '../../components/AnimatedNumber'
 import { Button } from '../../components/Button'
-import { CheckIcon, DoneBadge } from '../../components/icons'
+import { AgentNote, AiOrb } from '../../components/Flow'
+import { DoneBadge } from '../../components/icons'
 import { REVIEW_ITEMS, formatAmount, type CategoryItem, type DuplicateItem } from '../../data/mockData'
 
 type Props = {
@@ -32,20 +33,21 @@ export function ReviewQueue(props: Props) {
   return (
     <section aria-labelledby="queue-title" className="flex flex-col gap-3">
       <div className="flex items-baseline justify-between">
-        <h3 id="queue-title" className="text-[15px] font-semibold" aria-live="polite">
+        <h3 id="queue-title" className="flex items-center gap-2 text-[15px] font-semibold" aria-live="polite">
+          <AiOrb />
           Needs your review{' '}
           <span className="font-normal text-subtle">
             · <AnimatedNumber value={remaining} />
           </span>
         </h3>
         {remaining > 0 && (
-          <Button variant="link" className="text-[13px]" onClick={onAcceptAll}>
+          <Button size="sm" onClick={onAcceptAll}>
             Accept all suggestions
           </Button>
         )}
       </div>
 
-      <div className="overflow-hidden rounded-xl border border-line">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)]">
         <AnimatePresence initial={false}>
           {duplicates.length > 0 && <GroupHeader key="h-dup" label="Possible duplicates" count={duplicates.length} />}
           {duplicates.map((d) => (
@@ -75,11 +77,11 @@ export function ReviewQueue(props: Props) {
                         key={opt}
                         type="button"
                         onClick={() => onDecide(c.id, opt)}
-                        className={`inline-flex h-[30px] cursor-pointer items-center gap-1.5 rounded-full border bg-white px-2.5 text-[13px] transition-colors hover:bg-canvas active:scale-[0.97] ${
-                          suggested ? 'border-ink' : 'border-line'
+                        className={`inline-flex h-[30px] cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13px] transition-[transform,border-color] active:scale-[0.97] ${
+                          suggested ? 'flow-outline font-medium' : 'border border-line bg-white hover:border-faint'
                         }`}
                       >
-                        {suggested && <CheckIcon width={11} height={11} className="text-accent" />}
+                        {suggested && <AiOrb size={8} />}
                         {opt}
                         {suggested && <span className="sr-only">(suggested)</span>}
                       </button>
@@ -173,7 +175,7 @@ function ItemShell({
         </div>
         <span className="font-medium whitespace-nowrap">{formatAmount(amount)}</span>
       </div>
-      <p className="text-[13px] text-ink-2">{reason}</p>
+      <AgentNote>{reason}</AgentNote>
       {children}
     </div>
   )

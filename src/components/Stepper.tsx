@@ -14,7 +14,7 @@ export function Stepper({ current }: { current: number }) {
             {i > 0 && (
               <li aria-hidden="true" className="h-px w-8 bg-line">
                 <span
-                  className="block h-full origin-left bg-accent transition-transform duration-500"
+                  className="block h-full origin-left bg-ink transition-transform duration-500"
                   style={{ transform: `scaleX(${done || active ? 1 : 0})` }}
                 />
               </li>
