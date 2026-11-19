@@ -46,7 +46,7 @@ export function ProgressBar({
   tone?: 'ink' | 'accent' | 'warn'
   height?: number
 }) {
-  const color = { ink: 'bg-violet', accent: 'bg-lime', warn: 'bg-orange' }[tone]
+  const color = { ink: 'bg-violet', accent: 'bg-accent', warn: 'bg-orange' }[tone]
   return (
     <div
       role="progressbar"

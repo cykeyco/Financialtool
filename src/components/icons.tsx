@@ -79,6 +79,17 @@ export const AlertIcon = (p: P) => (
 export const DoneBadge = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 18 18" fill="none" aria-hidden="true">
     <circle cx="9" cy="9" r="9" className="fill-accent" />
-    <path d="M5.5 9.3 7.8 11.5 12.5 6.6" stroke="var(--color-black)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M5.5 9.3 7.8 11.5 12.5 6.6" stroke="var(--color-on-accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+export const SunIcon = (p: P) => (
+  <svg width="16" height="16" viewBox="0 0 16 16" {...base} {...p}>
+    <circle cx="8" cy="8" r="3" />
+    <path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1" />
+  </svg>
+)
+export const MoonIcon = (p: P) => (
+  <svg width="16" height="16" viewBox="0 0 16 16" {...base} {...p}>
+    <path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z" />
   </svg>
 )

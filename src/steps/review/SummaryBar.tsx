@@ -11,7 +11,7 @@ export function SummaryBar({ fileName, rows, ready, pending, unreadable }: Props
   return (
     <section
       aria-label="Check summary"
-      className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-2xl bg-white px-5 py-4 shadow-[0_0_0_1px_rgb(255_255_255/0.06)]"
+      className="flex flex-wrap items-center gap-x-8 gap-y-3 rounded-2xl bg-white px-5 py-4 shadow-[0_0_0_1px_var(--color-card-ring)]"
     >
       <div className="flex min-w-60 flex-1 flex-col leading-snug">
         <span className="font-medium">{fileName}</span>

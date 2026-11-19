@@ -26,7 +26,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
   return (
     <section
       aria-labelledby="analyzing-title"
-      className="relative grid min-h-[380px] overflow-hidden rounded-[20px] bg-white shadow-[0_0_0_1px_rgb(255_255_255/0.06)] md:grid-cols-2"
+      className="relative grid min-h-[380px] overflow-hidden rounded-[20px] bg-white shadow-[0_0_0_1px_var(--color-card-ring)] md:grid-cols-2"
     >
       <FlowField phase={Math.min(progress, steps.length)} settled={finished} />
 

@@ -47,7 +47,7 @@ export function ReviewQueue(props: Props) {
         )}
       </div>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_0_0_1px_rgb(255_255_255/0.06)]">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">
         <AnimatePresence initial={false}>
           {duplicates.length > 0 && <GroupHeader key="h-dup" label="Possible duplicates" count={duplicates.length} />}
           {duplicates.map((d) => (

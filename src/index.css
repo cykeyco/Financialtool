@@ -44,11 +44,72 @@
   --color-danger: #ff8a80; /* 6.8:1 — kept apart from orange so errors don't read as warnings */
   --color-danger-ink: #ffc4bd;
   --color-danger-bg: #33201f;
+
+  /* Theme-dependent helpers (dark values; light values below) */
+  --color-on-accent: #141414; /* mark on an accent fill, e.g. a check */
+  --color-lime-hover: #effdbf;
+  --color-lime-edge: #defd89; /* hairline round a lime button; invisible in dark, needed in light */
+  --color-primary-off: #2f3424; /* disabled level-1 fill */
+  --color-primary-off-ink: #7d8a5c;
+  --color-raised-hover: #3a3a3a;
+  --color-card-ring: rgb(255 255 255 / 0.06);
+  --color-focus: #defd89;
+}
+
+/* ——— Daytime ————————————————————————————————————————————————
+   Same palette, two jobs per colour: the original as a fill, a darker
+   "ink" for text and thin lines. Contrast figures are on white cards. */
+:root[data-theme='light'] {
+  --color-backdrop: #ecece8;
+  --color-panel: #f7f7f4;
+  --color-white: #ffffff;
+  --color-canvas: #f3f3ef;
+  --color-raised: #ffffff;
+  --color-black: #141414;
+
+  --color-ink: #141414; /* 18:1 */
+  --color-ink-2: #3a3a36;
+  --color-muted: #5e5e58; /* 6.5:1 */
+  --color-subtle: #6f6f69; /* 5.1:1 */
+  --color-faint: #a3a39c;
+
+  --color-line: #e6e6e0;
+  --color-line-soft: #efefea;
+  --color-line-strong: #d9d9d3;
+  --color-track: #ecece6;
+
+  --color-accent: #4a6b00; /* lime ink, 6.2:1 */
+  --color-accent-strong: #3d5a00;
+  --color-accent-bg: #f1f8dc;
+
+  --color-warn: #b0520f; /* orange ink, 5.2:1 */
+  --color-warn-bg: #fdf1e7;
+  --color-warn-pill: #fce1c9;
+
+  --color-danger: #c4372b; /* 5.4:1 */
+  --color-danger-ink: #8e241b;
+  --color-danger-bg: #fcedeb;
+
+  --color-on-accent: #ffffff;
+  --color-lime-hover: #d3f56f;
+  --color-lime-edge: #c5e46c; /* lime is 1.1:1 on white, so the button needs an edge */
+  --color-primary-off: #eef6d4;
+  --color-primary-off-ink: #8a9a63;
+  --color-raised-hover: #f2f2ee;
+  --color-card-ring: rgb(0 0 0 / 0.07);
+  --color-focus: #5b45d6; /* violet ink */
+
+  --flow-opacity: 0.6;
 }
 
 @layer base {
   html {
     color-scheme: dark;
+  }
+  html[data-theme='light'] {
+    color-scheme: light;
+  }
+  html {
     font-feature-settings: 'tnum' 1, 'cv11' 1; /* tabular numbers everywhere */
     -webkit-font-smoothing: antialiased;
   }
@@ -56,7 +117,7 @@
     @apply bg-backdrop text-ink font-sans text-sm;
   }
   :focus-visible {
-    outline: 2px solid var(--color-lime);
+    outline: 2px solid var(--color-focus);
     outline-offset: 2px;
   }
 }
@@ -98,6 +159,7 @@
       transform 2.6s cubic-bezier(0.45, 0, 0.25, 1),
       opacity 1.6s;
     will-change: transform;
+    opacity: var(--flow-opacity, 1);
   }
   .flow-b1 {
     width: 380px;
@@ -135,7 +197,7 @@
   .flow-fade {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, #242424 0, #242424 38%, rgb(36 36 36 / 0.7) 52%, rgb(36 36 36 / 0) 72%);
+    background: linear-gradient(90deg, var(--color-white) 0, var(--color-white) 38%, color-mix(in srgb, var(--color-white) 70%, transparent) 52%, transparent 72%);
   }
   .flow-grain {
     position: absolute;
@@ -160,12 +222,12 @@
   .flow-settled .flow-blob {
     transform: translate(-20px, 30px) scale(0.82);
     animation-play-state: paused;
-    opacity: 0.8;
+    opacity: calc(var(--flow-opacity, 1) * 0.8);
   }
 
   @media (max-width: 767px) {
     .flow-fade {
-      background: linear-gradient(180deg, rgb(36 36 36 / 0) 0, rgb(36 36 36 / 0.75) 34%, #242424 52%);
+      background: linear-gradient(180deg, transparent 0, color-mix(in srgb, var(--color-white) 75%, transparent) 34%, var(--color-white) 52%);
     }
     .flow-b1 { top: -14%; }
     .flow-b2 { top: -4%; }
