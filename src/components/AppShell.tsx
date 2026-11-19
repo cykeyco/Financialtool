@@ -12,10 +12,10 @@ const NAV: { route: Route; label: string; icon: typeof GridIcon }[] = [
 
 export function AppShell({ route, children }: { route: Route; children: ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col md:flex-row">
+    <div className="flex min-h-screen flex-col bg-backdrop md:flex-row">
       <nav
         aria-label="Main"
-        className="flex shrink-0 flex-col gap-8 border-b border-line bg-canvas px-4 py-6 md:sticky md:top-0 md:h-screen md:w-58 md:border-r md:border-b-0"
+        className="flex shrink-0 flex-col gap-8 px-4 py-6 md:sticky md:top-0 md:h-screen md:w-58"
       >
         <a href="#overview" className="flex items-center gap-2.5 px-2 text-ink">
           <span aria-hidden="true" className="flex size-6 items-center justify-center rounded-md bg-ink text-white">
@@ -33,7 +33,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
                   aria-current={current ? 'page' : undefined}
                   className={`flex min-h-9 items-center gap-2.5 rounded-lg px-2.5 py-2 transition-colors ${
                     current
-                      ? 'bg-white font-medium text-ink shadow-[0_0_0_1px_var(--color-line)]'
+                      ? 'bg-white font-medium text-ink shadow-[0_1px_2px_rgb(0_0_0/0.04)]'
                       : 'text-ink-2 hover:bg-white/60 hover:text-ink'
                   }`}
                 >
@@ -57,7 +57,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
           </span>
         </div>
       </nav>
-      <main className="flex min-w-0 flex-1 flex-col">{children}</main>
+      <main className="m-2 flex min-w-0 flex-1 flex-col rounded-[20px] bg-panel md:my-3 md:mr-3 md:ml-0">{children}</main>
     </div>
   )
 }
