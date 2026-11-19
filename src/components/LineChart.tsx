@@ -58,8 +58,8 @@ export function LineChart({ points, ariaLabel, formatAxis, height = 240, target,
         <svg role="img" aria-label={ariaLabel} width={W} height={H} className="absolute inset-0 overflow-visible">
           {ticks.map((t) => (
             <g key={t}>
-              <line x1={PAD.left} x2={W - PAD.right + 8} y1={y(t)} y2={y(t)} stroke="#efefec" />
-              <text x={W - PAD.right + 14} y={y(t) + 4} fontSize="11" fill="#6b7078">
+              <line x1={PAD.left} x2={W - PAD.right + 8} y1={y(t)} y2={y(t)} stroke="var(--color-line)" />
+              <text x={W - PAD.right + 14} y={y(t) + 4} fontSize="11" fill="var(--color-subtle)">
                 {formatAxis(t)}
               </text>
             </g>
@@ -71,16 +71,16 @@ export function LineChart({ points, ariaLabel, formatAxis, height = 240, target,
                 x2={W - PAD.right + 8}
                 y1={y(target.value)}
                 y2={y(target.value)}
-                stroke="#17181a"
+                stroke="var(--color-ink)"
                 strokeDasharray="4 4"
               />
-              <text x={PAD.left + 4} y={y(target.value) - 6} fontSize="11" fill="#17181a" fontWeight={500}>
+              <text x={PAD.left + 4} y={y(target.value) - 6} fontSize="11" fill="var(--color-ink)" fontWeight={500}>
                 {target.label}
               </text>
             </g>
           )}
-          <path d={area} fill="#2e6a53" fillOpacity={0.07} />
-          <path d={line} fill="none" stroke="#2e6a53" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+          <path d={area} fill="var(--color-kyuri)" fillOpacity={0.07} />
+          <path d={line} fill="none" stroke="var(--color-kyuri)" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
           {points.map((p, i) =>
             i % every === 0 || i === last ? (
               <text
@@ -88,7 +88,7 @@ export function LineChart({ points, ariaLabel, formatAxis, height = 240, target,
                 x={x(i)}
                 y={H - 6}
                 fontSize="11"
-                fill={i === last ? '#17181a' : '#6b7078'}
+                fill={i === last ? 'var(--color-ink)' : 'var(--color-subtle)'}
                 fontWeight={i === last ? 500 : 400}
                 textAnchor={i === 0 ? 'start' : i === last ? 'end' : 'middle'}
               >
@@ -101,17 +101,17 @@ export function LineChart({ points, ariaLabel, formatAxis, height = 240, target,
             x2={x(last)}
             y1={y(points[last].value)}
             y2={y(min)}
-            stroke="#2e6a53"
+            stroke="var(--color-kyuri)"
             strokeDasharray="2 3"
           />
-          <circle cx={x(last)} cy={y(points[last].value)} r={4.5} fill="#fff" stroke="#2e6a53" strokeWidth={2} />
+          <circle cx={x(last)} cy={y(points[last].value)} r={4.5} fill="#fff" stroke="var(--color-kyuri)" strokeWidth={2} />
           {endLabel && (
             <text
               x={x(last) - 10}
               y={y(points[last].value) - 10}
               fontSize="12"
               fontWeight={600}
-              fill="#17181a"
+              fill="var(--color-ink)"
               textAnchor="end"
             >
               {endLabel}

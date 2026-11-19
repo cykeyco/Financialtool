@@ -28,7 +28,7 @@ export function AiOrb({ size = 14, spinning = false }: { size?: number; spinning
       style={{
         width: size,
         height: size,
-        boxShadow: `inset 0 0 0 1px rgb(255 255 255 / 0.5), 0 0 ${spinning ? 10 : 8}px rgb(94 154 128 / ${spinning ? 0.55 : 0.35})`,
+        boxShadow: `inset 0 0 0 1px rgb(255 255 255 / 0.5), 0 0 ${spinning ? 10 : 8}px rgb(242 182 53 / ${spinning ? 0.55 : 0.35})`,
       }}
     />
   )

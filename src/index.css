@@ -5,37 +5,40 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --color-ink: #111113;
-  --color-ink-2: #4b4f56;
-  --color-muted: #5b5f66;
-  --color-subtle: #6b7078;
-  --color-faint: #9a9ea5;
+  /* ——— Palette ——————————————————————————————————————————— */
+  --color-chalk: #f6f4f1; /* White Chalk */
+  --color-dawn: #ece2ce; /* Radiant Dawn */
+  --color-sneeze: #f2b635; /* Sneezeweeds */
+  --color-tobiko: #e45c10; /* Tobiko Orange */
+  --color-kyuri: #4b5d16; /* Kyuri Green */
+  --color-forest: #223300; /* Blind Forest */
 
-  --color-line: #e6e6e3;
-  --color-line-soft: #f0f0ed;
-  --color-canvas: #f3f3f5;
-  --color-backdrop: #ececee; /* grey ground behind the app panel */
-  --color-panel: #f8f8f9; /* the rounded app panel */
-  --color-track: #efefec;
+  /* ——— Roles (every text pair passes WCAG AA) ————————————————— */
+  --color-ink: #223300; /* forest: 12.4:1 on chalk */
+  --color-ink-2: #3d4a24;
+  --color-muted: #5b6147;
+  --color-subtle: #6b6f5a;
+  --color-faint: #9b9c8c; /* placeholders and decoration only */
 
-  --color-accent: #2e6a53;
-  --color-accent-strong: #1f4a3a;
-  --color-accent-bg: #f4f8f6;
+  --color-line: #e4ddcf;
+  --color-line-soft: #efeae0;
+  --color-line-strong: #d6cdb9;
+  --color-canvas: #f3eee5; /* table headers, wells */
+  --color-track: #ebe5d7;
+  --color-backdrop: #ece2ce; /* dawn: ground behind the app panel */
+  --color-panel: #f6f4f1; /* chalk: the rounded app panel */
 
-  --color-warn: #8a5300;
-  --color-warn-bg: #fffbf2;
-  --color-warn-pill: #fbefd5;
+  --color-accent: #4b5d16; /* kyuri: success, positive change, links */
+  --color-accent-strong: #223300;
+  --color-accent-bg: #eef0e1;
 
-  --color-danger: #b42318;
-  --color-danger-ink: #7a1f17;
-  --color-danger-bg: #fdf1f0;
+  --color-warn: #8a5a00;
+  --color-warn-bg: #fdf6e4;
+  --color-warn-pill: #fbe6ad;
 
-  /* Flow: used only where money is moving or the agent is at work. */
-  /* Built from the existing palette: accent green, asset sage, budget amber. */
-  --color-flow-green: #2e6a53;
-  --color-flow-sage: #5e9a80;
-  --color-flow-amber: #c27a00;
-  --color-flow-mist: #a9cbbb;
+  --color-danger: #b5440a; /* darkened tobiko, 5.5:1 on white */
+  --color-danger-ink: #7a2e06;
+  --color-danger-bg: #fdeee4;
 }
 
 @layer base {
@@ -47,24 +50,24 @@
     @apply bg-backdrop text-ink font-sans text-sm;
   }
   :focus-visible {
-    outline: 2px solid var(--color-flow-sage);
+    outline: 2px solid var(--color-tobiko);
     outline-offset: 2px;
   }
 }
 
-/* ——— Flow: grainy moving gradient ——————————————————————————————
+/* ——— Flow: grainy moving gradient, forest → kyuri → sneezeweed → tobiko ——————————————————————————————
    Rule: gradient means money in motion or AI at work. Data surfaces stay neutral. */
 @layer components {
   .flow-line {
-    background: linear-gradient(90deg, var(--color-flow-green), var(--color-flow-sage) 55%, var(--color-flow-amber));
+    background: linear-gradient(90deg, var(--color-forest), var(--color-kyuri) 35%, var(--color-sneeze) 70%, var(--color-tobiko));
   }
   .flow-conic {
     background: conic-gradient(
       from 0deg,
-      var(--color-flow-green),
-      var(--color-flow-sage),
-      var(--color-flow-amber),
-      var(--color-flow-green)
+      var(--color-kyuri),
+      var(--color-sneeze),
+      var(--color-tobiko),
+      var(--color-kyuri)
     );
   }
   /* Outline drawn with the flow gradient: marks an option the agent suggests. */
@@ -72,7 +75,7 @@
     border: 1.5px solid transparent;
     background:
       linear-gradient(#fff, #fff) padding-box,
-      linear-gradient(90deg, var(--color-flow-green), var(--color-flow-sage) 55%, var(--color-flow-amber)) border-box;
+      linear-gradient(90deg, var(--color-kyuri), var(--color-sneeze) 55%, var(--color-tobiko)) border-box;
   }
 
   .flow-field {
@@ -95,7 +98,7 @@
     height: 380px;
     right: 4%;
     top: 6%;
-    background: radial-gradient(circle, #2e6a53 0, rgb(46 106 83 / 0.55) 40%, transparent 70%);
+    background: radial-gradient(circle, #4b5d16 0, rgb(75 93 22 / 0.55) 40%, transparent 70%);
     animation: flow-d1 14s ease-in-out infinite alternate;
   }
   .flow-b2 {
@@ -103,7 +106,7 @@
     height: 300px;
     right: 22%;
     top: 40%;
-    background: radial-gradient(circle, #5e9a80 0, rgb(94 154 128 / 0.5) 45%, transparent 70%);
+    background: radial-gradient(circle, #f2b635 0, rgb(242 182 53 / 0.55) 45%, transparent 70%);
     animation: flow-d2 17s ease-in-out infinite alternate;
   }
   .flow-b3 {
@@ -111,7 +114,7 @@
     height: 260px;
     right: -4%;
     top: 52%;
-    background: radial-gradient(circle, #c27a00 0, rgb(194 122 0 / 0.45) 45%, transparent 70%);
+    background: radial-gradient(circle, #e45c10 0, rgb(228 92 16 / 0.5) 45%, transparent 70%);
     animation: flow-d3 12s ease-in-out infinite alternate;
   }
   .flow-b4 {
@@ -119,7 +122,7 @@
     height: 300px;
     right: 30%;
     top: -12%;
-    background: radial-gradient(circle, #a9cbbb 0, transparent 68%);
+    background: radial-gradient(circle, #ece2ce 0, transparent 68%);
     animation: flow-d2 19s ease-in-out infinite alternate-reverse;
   }
   /* Keeps the text side of the card clean. */

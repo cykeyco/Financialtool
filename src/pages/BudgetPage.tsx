@@ -267,7 +267,7 @@ function TextField({ label, value, onChange }: { label: string; value: string; o
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-10 rounded-lg border border-line px-3 text-base outline-none transition-colors focus:border-ink hover:border-[#d2d2ce]"
+        className="h-10 rounded-lg border border-line px-3 text-base outline-none transition-colors focus:border-ink hover:border-line-strong"
       />
     </div>
   )

@@ -38,7 +38,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
           <p className="flex items-center gap-1.5 text-[13px] text-muted" aria-live="polite">
             <span
               aria-hidden="true"
-              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-flow-sage'}`}
+              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-sneeze'}`}
             />
             {status} · {file.rows} rows
           </p>
@@ -81,7 +81,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
                         <AiOrb size={16} spinning />
                       </motion.span>
                     ) : (
-                      <span key="todo" className="size-4 rounded-full shadow-[inset_0_0_0_1px_#d4d4d8]" />
+                      <span key="todo" className="size-4 rounded-full shadow-[inset_0_0_0_1px_var(--color-line-strong)]" />
                     )}
                   </AnimatePresence>
                 </span>

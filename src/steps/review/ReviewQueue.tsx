@@ -41,7 +41,7 @@ export function ReviewQueue(props: Props) {
           </span>
         </h3>
         {remaining > 0 && (
-          <Button size="sm" onClick={onAcceptAll}>
+          <Button size="sm" variant="secondary" onClick={onAcceptAll}>
             Accept all suggestions
           </Button>
         )}
