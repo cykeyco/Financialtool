@@ -7,7 +7,7 @@ import { AUTO_MAPPINGS, UNCERTAIN_MAPPING } from '../../data/mockData'
 import type { MappingChoice } from '../../state/importFlow'
 
 const ROW = 'grid grid-cols-[1fr_16px_1fr_72px_28px] items-center gap-3'
-const pct = (n: number) => `${Math.round(n * 100)}%`
+const pct = (n: number) => `${Math.round(n * 100)}\u00a0%`
 
 export function MappingPanel({
   choice,
@@ -28,7 +28,7 @@ export function MappingPanel({
         <span className="text-[13px] text-muted">Select a row to see why</span>
       </div>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">
+      <div className="overflow-hidden bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">
         <div className={`${ROW} border-b border-line bg-canvas px-4 py-2.5 text-xs text-muted`}>
           <span>In your file</span>
           <span />
@@ -89,7 +89,7 @@ export function MappingPanel({
                 <span className="font-mono text-[13px]">{UNCERTAIN_MAPPING.source}</span>
                 <ArrowRightIcon className="text-faint" />
                 <span className="font-medium text-warn">Choose a field</span>
-                <span className="justify-self-end rounded-full bg-warn-pill px-2 py-0.5 text-xs font-medium text-warn">
+                <span className="justify-self-end bg-warn-pill px-2 py-0.5 text-xs font-medium text-warn">
                   {pct(UNCERTAIN_MAPPING.confidence)}
                 </span>
                 <span />

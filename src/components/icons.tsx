@@ -78,7 +78,7 @@ export const AlertIcon = (p: P) => (
 /** Filled green circle with a white tick. */
 export const DoneBadge = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 18 18" fill="none" aria-hidden="true">
-    <circle cx="9" cy="9" r="9" className="fill-accent" />
+    <rect x="0" y="0" width="18" height="18" className="fill-accent" />
     <path d="M5.5 9.3 7.8 11.5 12.5 6.6" stroke="var(--color-on-accent)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )

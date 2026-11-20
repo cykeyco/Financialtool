@@ -27,7 +27,7 @@ export function ImportPage() {
       <div className="flex-1 px-6 pt-10 pb-12 md:px-12">
         <div className="mx-auto flex max-w-[1120px] flex-col gap-8">
           <header className="flex flex-col gap-1">
-            <h1 className="text-[36px] leading-[1.1] font-light tracking-[-0.02em]">Import data</h1>
+            <h1 className="text-[36px] leading-[1.05] font-semibold tracking-[-0.025em]">Import data</h1>
             <p className="text-muted">Bring in transactions from a bank export. Nothing is saved until you confirm.</p>
           </header>
 
@@ -76,7 +76,7 @@ export function ImportPage() {
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="sticky bottom-0 rounded-b-[20px] border-t border-line bg-panel/90 px-6 py-4 backdrop-blur md:px-12"
+            className="sticky bottom-0 border-t border-line bg-panel/90 px-6 py-4 backdrop-blur md:px-12"
           >
             <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3">
               <p className="text-[13px] text-muted" aria-live="polite">

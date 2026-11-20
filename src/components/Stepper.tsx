@@ -26,7 +26,7 @@ export function Stepper({ current }: { current: number }) {
               }`}
             >
               <span
-                className={`flex size-5 items-center justify-center rounded-full text-[11px] transition-colors duration-300 ${
+                className={`flex size-5 items-center justify-center text-[11px] transition-colors duration-300 ${
                   done
                     ? 'bg-accent text-white'
                     : active

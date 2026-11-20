@@ -20,7 +20,7 @@ export function BudgetPage() {
         description="What you plan to spend each month, and what you are saving towards."
         actions={
           <>
-            <span className="inline-flex h-10 items-center rounded-full border border-line-strong px-4 font-medium">
+            <span className="inline-flex h-10 items-center border border-line-strong px-4 font-medium">
               {state.month}
             </span>
             <Button onClick={() => setEditing({ mode: 'new' })}>Add category</Button>
@@ -31,7 +31,7 @@ export function BudgetPage() {
       {/* Headline: what's left, and what that means per day */}
       <section aria-labelledby="left" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h2 id="left" className="text-[clamp(32px,4.5vw,44px)] leading-none font-semibold tracking-[-0.03em]">
+          <h2 id="left" className="figure text-[clamp(32px,4.5vw,44px)] leading-none font-semibold tracking-[-0.03em]">
             {sek(Math.abs(d.budgetLeft))}
           </h2>
           <span className="text-lg text-muted">{d.budgetLeft >= 0 ? 'left this month' : 'over budget'}</span>
@@ -39,7 +39,7 @@ export function BudgetPage() {
         <ProgressBar value={d.budgetUsed} label="Budget used" tone={d.budgetUsed > 1 ? 'warn' : 'ink'} height={10} />
         <p className="text-muted">
           {sek(d.spending)} of {sek(d.budget)} spent · {DAYS_LEFT_IN_MONTH} days left
-          {perDay > 0 && <> · about SEK {num(perDay)} a day</>}
+          {perDay > 0 && <> · about {sek(perDay)} a day</>}
         </p>
       </section>
 
@@ -49,7 +49,7 @@ export function BudgetPage() {
           <SectionTitle id="cats" aside="Select a category to edit">
             Categories
           </SectionTitle>
-          <div className="relative overflow-x-auto rounded-xl border border-line">
+          <div className="relative overflow-x-auto border border-line">
             <table className="w-full min-w-[560px] border-collapse">
               <thead>
                 <tr className="bg-canvas text-left text-xs text-muted">
@@ -99,10 +99,10 @@ export function BudgetPage() {
                             {c.name}
                           </button>
                         </th>
-                        <td className="border-b border-line-soft px-4 py-3 text-right">{num(c.budget)}</td>
-                        <td className="border-b border-line-soft px-4 py-3 text-right">{num(c.spent)}</td>
+                        <td className="num border-b border-line-soft px-4 py-3 text-right">{num(c.budget)}</td>
+                        <td className="num border-b border-line-soft px-4 py-3 text-right">{num(c.spent)}</td>
                         <td
-                          className={`border-b border-line-soft px-4 py-3 text-right whitespace-nowrap ${over ? 'font-medium text-warn' : ''}`}
+                          className={`num border-b border-line-soft px-4 py-3 text-right whitespace-nowrap ${over ? 'font-medium text-warn' : ''}`}
                         >
                           {over ? `Over ${num(c.spent - c.budget)}` : num(c.budget - c.spent)}
                         </td>
@@ -131,9 +131,9 @@ export function BudgetPage() {
                   <th scope="row" className="px-4 py-3 text-left">
                     Total
                   </th>
-                  <td className="px-4 py-3 text-right">{num(d.budget)}</td>
-                  <td className="px-4 py-3 text-right">{num(d.spending)}</td>
-                  <td className="px-4 py-3 text-right">{num(d.budgetLeft)}</td>
+                  <td className="num px-4 py-3 text-right">{num(d.budget)}</td>
+                  <td className="num px-4 py-3 text-right">{num(d.spending)}</td>
+                  <td className="num px-4 py-3 text-right">{num(d.budgetLeft)}</td>
                   <td className="px-4 py-3 text-xs font-normal text-subtle">{pct(d.budgetUsed)} used</td>
                 </tr>
               </tfoot>
@@ -142,7 +142,7 @@ export function BudgetPage() {
         </section>
 
         {/* Editor */}
-        <aside aria-label="Category editor" className="rounded-2xl border border-line p-6 lg:sticky lg:top-6">
+        <aside aria-label="Category editor" className="border border-line p-6 lg:sticky lg:top-6">
           <AnimatePresence mode="wait" initial={false}>
             {editing.mode === 'new' ? (
               <motion.div key="new" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
@@ -239,7 +239,7 @@ function GoalCard({ goal }: { goal: Goal }) {
   const months = goal.monthly > 0 ? Math.ceil(left / goal.monthly) : null
   const done = new Date(2026, 10 + (months ?? 0), 1).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-line p-5">
+    <div className="flex flex-col gap-3 border border-line p-5">
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="font-medium">{goal.name}</h3>
         <span className="text-[13px] text-muted">{sek(goal.target)}</span>
@@ -250,7 +250,7 @@ function GoalCard({ goal }: { goal: Goal }) {
       </div>
       <ProgressBar value={goal.saved / goal.target} label={`${goal.name} progress`} tone="accent" />
       <p className="text-[13px] text-muted">
-        SEK {num(goal.monthly)} a month{months !== null && <> · reached by {done}</>}
+        {sek(goal.monthly)} a month{months !== null && <> · reached by {done}</>}
       </p>
     </div>
   )
@@ -267,7 +267,7 @@ function TextField({ label, value, onChange }: { label: string; value: string; o
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-10 rounded-lg border border-line px-3 text-base outline-none transition-colors focus:border-ink hover:border-line-strong"
+        className="h-10 border border-line px-3 text-base outline-none transition-colors focus:border-ink hover:border-line-strong"
       />
     </div>
   )

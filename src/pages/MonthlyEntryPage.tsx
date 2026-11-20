@@ -40,7 +40,7 @@ export function MonthlyEntryPage() {
             <SectionTitle id="balances" aside={`Balances on 30 ${state.month}`}>
               Account balances
             </SectionTitle>
-            <div className="relative overflow-x-auto rounded-xl border border-line">
+            <div className="relative overflow-x-auto border border-line">
               <table className="w-full min-w-[520px] border-collapse">
                 <thead>
                   <tr className="bg-canvas text-left text-xs text-muted">
@@ -78,7 +78,7 @@ export function MonthlyEntryPage() {
                 </tbody>
               </table>
             </div>
-            <dl className="grid grid-cols-3 gap-4 rounded-xl bg-canvas px-5 py-4">
+            <dl className="grid grid-cols-3 gap-4 bg-canvas px-5 py-4">
               <div className="flex flex-col">
                 <dt className="text-xs text-muted">Assets</dt>
                 <dd className="text-lg font-semibold">
@@ -126,22 +126,22 @@ export function MonthlyEntryPage() {
         {/* Summary: sticky on wide screens so it stays in view while editing */}
         <aside
           aria-label="Month summary"
-          className="flex flex-col gap-6 rounded-2xl border border-line p-6 lg:sticky lg:top-6"
+          className="flex flex-col gap-6 border border-line p-6 lg:sticky lg:top-6"
         >
           <SectionTitle aside={state.savedAt ? `Saved ${state.savedAt}` : 'Not saved yet'}>{state.month}</SectionTitle>
           <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-3">
             <dt className="text-muted">Income</dt>
-            <dd className="text-right font-medium">{sek(d.income)}</dd>
+            <dd className="num text-right font-medium">{sek(d.income)}</dd>
             <dt className="text-muted">
               Spending{' '}
               <Button variant="link" className="text-[13px]" onClick={() => go('budget')}>
                 from budget
               </Button>
             </dt>
-            <dd className="text-right font-medium">− {sek(d.spending)}</dd>
+            <dd className="num text-right font-medium">− {sek(d.spending)}</dd>
             <div className="col-span-2 border-t border-line" />
             <dt className="font-medium">Saved</dt>
-            <dd className={`text-right text-lg font-semibold ${d.saved < 0 ? 'text-danger' : 'text-accent'}`}>
+            <dd className={`num text-right text-lg font-semibold ${d.saved < 0 ? 'text-danger' : 'text-accent'}`}>
               {sek(d.saved)}
             </dd>
           </dl>
@@ -154,8 +154,8 @@ export function MonthlyEntryPage() {
             </div>
             <ProgressBar value={d.budgetUsed} label="Budget used" tone={d.budgetUsed > 1 ? 'warn' : 'ink'} />
             {d.overBudget.map((c) => (
-              <p key={c.id} className="rounded-lg bg-warn-bg px-3 py-2 text-[13px] text-warn">
-                {c.name} is SEK {num(c.spent - c.budget)} over budget.
+              <p key={c.id} className="bg-warn-bg px-3 py-2 text-[13px] text-warn">
+                {c.name} is {sek(c.spent - c.budget)} over budget.
               </p>
             ))}
           </div>
@@ -168,7 +168,7 @@ export function MonthlyEntryPage() {
           />
           <TextArea
             label="Plan for next month"
-            placeholder="e.g. Cook at home more, groceries back under 6,000"
+            placeholder="e.g. Cook at home more, groceries back under 6 000 kr"
             value={state.notes.nextMonth}
             onChange={(s) => dispatch({ type: 'notes', patch: { nextMonth: s } })}
           />
@@ -182,7 +182,7 @@ export function MonthlyEntryPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
-            className="fixed bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-lg bg-ink px-4 py-3 text-white shadow-lg"
+            className="fixed bottom-6 left-1/2 z-10 -translate-x-1/2 bg-ink px-4 py-3 text-white shadow-lg"
           >
             {toast}
           </motion.div>
@@ -214,12 +214,12 @@ function Row({
         {name}
         {liability && <span className="ml-2 text-xs text-subtle">Liability</span>}
       </th>
-      <td className="border-b border-line-soft px-4 py-2 text-right text-muted">{num(last)}</td>
+      <td className="num border-b border-line-soft px-4 py-2 text-right text-muted">{num(last)}</td>
       <td className="border-b border-line-soft px-4 py-2">
         <MoneyField label={`${name}, this month`} hideLabel value={current} onChange={onChange} />
       </td>
       <td
-        className={`border-b border-line-soft px-4 py-2 text-right whitespace-nowrap ${
+        className={`num border-b border-line-soft px-4 py-2 text-right whitespace-nowrap ${
           change === 0 ? 'text-subtle' : good ? 'text-accent' : 'text-danger'
         }`}
       >

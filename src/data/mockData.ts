@@ -83,7 +83,7 @@ export const DUPLICATES: DuplicateItem[] = [
     id: 'd1',
     kind: 'duplicate',
     name: 'ICA Maxi Malmö',
-    date: '3 Nov 2026',
+    date: '3 nov',
     row: 214,
     amount: -1250,
     reason: 'Same amount, date and description as row 88. Banks sometimes export a pending and a settled copy.',
@@ -92,7 +92,7 @@ export const DUPLICATES: DuplicateItem[] = [
     id: 'd2',
     kind: 'duplicate',
     name: 'Netflix',
-    date: '1 Nov 2026',
+    date: '1 nov',
     row: 12,
     amount: -149,
     reason: 'Identical to row 11. Subscriptions are rarely charged twice on the same day.',
@@ -101,7 +101,7 @@ export const DUPLICATES: DuplicateItem[] = [
     id: 'd3',
     kind: 'duplicate',
     name: 'Skånetrafiken',
-    date: '6 Nov 2026',
+    date: '6 nov',
     row: 240,
     amount: -795,
     reason: 'Same as row 239, one second apart. Likely a double export.',
@@ -110,7 +110,7 @@ export const DUPLICATES: DuplicateItem[] = [
     id: 'd4',
     kind: 'duplicate',
     name: 'Vattenfall',
-    date: '8 Nov 2026',
+    date: '8 nov',
     row: 251,
     amount: -1120,
     reason: 'Matches row 250, and this bill is already in your last import.',
@@ -122,7 +122,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: 'c1',
     kind: 'category',
     name: 'Swish – A. Lindqvist',
-    date: '5 Nov 2026',
+    date: '5 nov',
     row: 231,
     amount: -8500,
     reason: 'Same amount to the same person on the 5th of each month since June.',
@@ -133,7 +133,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: 'c2',
     kind: 'category',
     name: 'Klarna AB',
-    date: '11 Nov 2026',
+    date: '11 nov',
     row: 302,
     amount: -649,
     reason: 'Klarna is a payment provider, so the store behind this purchase is unknown.',
@@ -144,7 +144,7 @@ export const CATEGORY_ITEMS: CategoryItem[] = [
     id: 'c3',
     kind: 'category',
     name: 'Swish – Malmö Padelcenter',
-    date: '14 Nov 2026',
+    date: '14 nov',
     row: 344,
     amount: -320,
     reason: 'The name suggests a sports venue. You have no category for sport yet.',
@@ -173,7 +173,4 @@ export function analysisSteps(file: ImportFile) {
   ]
 }
 
-const sek = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-export function formatAmount(n: number) {
-  return `${n < 0 ? '−' : '+'} ${sek.format(Math.abs(n))}`
-}
+export { amount as formatAmount } from '../lib/format'

@@ -21,7 +21,7 @@ export function OverviewPage() {
         description="Your household finances at a glance."
         actions={
           <>
-            <span className="inline-flex h-10 items-center rounded-full border border-line-strong px-4 font-medium">
+            <span className="inline-flex h-10 items-center border border-line-strong px-4 font-medium">
               {state.month}
             </span>
             <Button onClick={() => go('monthly')}>Add monthly entry</Button>
@@ -39,10 +39,10 @@ export function OverviewPage() {
             Net worth
           </h2>
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-medium text-subtle">SEK</span>
-            <span className="text-[clamp(36px,5vw,48px)] leading-none font-semibold tracking-[-0.03em]">
+            <span className="figure text-[clamp(36px,5vw,48px)] leading-none font-semibold tracking-[-0.035em]">
               {num(d.netWorth)}
             </span>
+            <span className="text-lg text-subtle">kr</span>
           </div>
           <p className={`font-medium ${up ? 'text-accent' : 'text-danger'}`}>
             {sekDelta(d.netWorthChange)} this month{' '}
@@ -53,9 +53,9 @@ export function OverviewPage() {
           </p>
           <dl className="mt-2 grid w-fit grid-cols-[auto_auto] gap-x-6 gap-y-1 text-[13px]">
             <dt className="text-subtle">Assets</dt>
-            <dd className="text-right">{sek(d.assets)}</dd>
+            <dd className="num text-right">{sek(d.assets)}</dd>
             <dt className="text-subtle">{state.liabilities.name}</dt>
-            <dd className="text-right">− {sek(state.liabilities.current)}</dd>
+            <dd className="num text-right">− {sek(state.liabilities.current)}</dd>
           </dl>
         </div>
         <LineChart
@@ -98,7 +98,7 @@ export function OverviewPage() {
           <div
             role="img"
             aria-label={d.allocation.map((a) => `${a.label} ${pct(a.value / d.assets)}`).join(', ')}
-            className="flex h-2 gap-0.5 overflow-hidden rounded-full"
+            className="flex h-2 gap-0.5 overflow-hidden"
           >
             {d.allocation.map((a, i) => (
               <div key={a.label} style={{ width: `${(a.value / d.assets) * 100}%`, background: ALLOC_COLORS[i] }} />
@@ -110,10 +110,10 @@ export function OverviewPage() {
                 key={a.label}
                 className="grid grid-cols-[10px_1fr_auto_52px] items-center gap-2.5 border-b border-line-soft py-2 last:border-0"
               >
-                <span aria-hidden="true" className="size-2 rounded-[2px]" style={{ background: ALLOC_COLORS[i] }} />
+                <span aria-hidden="true" className="size-2" style={{ background: ALLOC_COLORS[i] }} />
                 <span>{a.label}</span>
-                <span>{num(a.value)}</span>
-                <span className="text-right text-subtle">{pct(a.value / d.assets)}</span>
+                <span className="num">{num(a.value)}</span>
+                <span className="num text-right text-subtle">{pct(a.value / d.assets)}</span>
               </li>
             ))}
           </ul>
@@ -132,17 +132,17 @@ export function OverviewPage() {
             {state.month.split(' ')[0]} budget
           </SectionTitle>
           <div className="flex items-baseline gap-2">
-            <span className="text-[28px] font-semibold tracking-[-0.02em]">{sek(Math.abs(d.budgetLeft))}</span>
+            <span className="figure text-[28px] font-semibold tracking-[-0.02em]">{sek(Math.abs(d.budgetLeft))}</span>
             <span className="text-muted">{d.budgetLeft >= 0 ? 'left to spend' : 'over budget'}</span>
           </div>
           <ProgressBar value={d.budgetUsed} label="Budget used" tone={d.budgetUsed > 1 ? 'warn' : 'ink'} />
           <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-2 text-[13px]">
             <dt className="text-muted">Spent</dt>
-            <dd className="text-right">{sek(d.spending)}</dd>
+            <dd className="num text-right">{sek(d.spending)}</dd>
             <dt className="text-muted">Budget</dt>
-            <dd className="text-right">{sek(d.budget)}</dd>
+            <dd className="num text-right">{sek(d.budget)}</dd>
             <dt className="text-muted">Days left in month</dt>
-            <dd className="text-right">{DAYS_LEFT_IN_MONTH}</dd>
+            <dd className="num text-right">{DAYS_LEFT_IN_MONTH}</dd>
           </dl>
           {d.overBudget.length > 0 && (
             <p className="text-[13px] text-warn">
@@ -164,17 +164,17 @@ export function OverviewPage() {
             Retirement goal
           </SectionTitle>
           <div className="flex items-baseline gap-2">
-            <span className="text-[28px] font-semibold tracking-[-0.02em]">{pct(retProgress, 0)}</span>
+            <span className="figure text-[28px] font-semibold tracking-[-0.02em]">{pct(retProgress, 0)}</span>
             <span className="text-muted">of {sek(ret.goal)}</span>
           </div>
           <ProgressBar value={retProgress} label="Retirement goal progress" tone="accent" />
           <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-2 text-[13px]">
             <dt className="text-muted">Saved so far</dt>
-            <dd className="text-right">{sek(d.netWorth)}</dd>
+            <dd className="num text-right">{sek(d.netWorth)}</dd>
             <dt className="text-muted">Remaining</dt>
-            <dd className="text-right">{sek(Math.max(0, ret.goal - d.netWorth))}</dd>
+            <dd className="num text-right">{sek(Math.max(0, ret.goal - d.netWorth))}</dd>
             <dt className="text-muted">Target age</dt>
-            <dd className="text-right">{ret.retireAge}</dd>
+            <dd className="num text-right">{ret.retireAge}</dd>
           </dl>
         </section>
       </div>

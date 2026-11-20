@@ -2,8 +2,21 @@
 
 /* Design tokens — one place to change the look. */
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* No rounded corners anywhere: every radius token is zero. */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-4xl: 0;
+
+  /* Schibsted Grotesk: drawn for Scandinavian newspapers. IBM Plex Mono for money,
+     so every amount reads like a line on a bank statement. */
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   /* ——— Palette ——————————————————————————————————————————— */
   --color-lime: #defd89;
@@ -12,7 +25,7 @@
 
   /* ——— Dark surfaces (lightest = closest to the viewer) ——————— */
   --color-backdrop: #121212; /* ground behind the app panel */
-  --color-panel: #1a1a1a; /* the rounded app panel */
+  --color-panel: #1a1a1a; /* the app panel */
   --color-white: #242424; /* cards. `bg-white` means "card surface" in this dark theme */
   --color-canvas: #2c2c2c; /* table headers, wells */
   --color-raised: #303030; /* secondary buttons, chips */
@@ -110,7 +123,6 @@
     color-scheme: light;
   }
   html {
-    font-feature-settings: 'tnum' 1, 'cv11' 1; /* tabular numbers everywhere */
     -webkit-font-smoothing: antialiased;
   }
   body {
@@ -125,6 +137,17 @@
 /* ——— Flow: grainy moving gradient, violet → lime → orange ——————————————————————————————
    Rule: gradient means money in motion or AI at work. Data surfaces stay neutral. */
 @layer components {
+  /* Amounts, counts and percentages: the ledger face. */
+  /* Ledger columns, inputs and statement amounts: the monospace face. */
+  .num {
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+  }
+  /* Headline figures: the text face (proportional, so commas stay tight). */
+  .figure {
+    font-variant-numeric: lining-nums;
+  }
+
   .flow-line {
     background: linear-gradient(90deg, var(--color-violet), var(--color-lime) 60%, var(--color-orange));
   }

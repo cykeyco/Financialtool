@@ -21,7 +21,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
         className="flex shrink-0 flex-col gap-8 px-4 py-6 md:sticky md:top-0 md:h-screen md:w-58"
       >
         <a href="#overview" className="flex items-center gap-2.5 px-2 text-ink">
-          <span aria-hidden="true" className="flex size-6 items-center justify-center rounded-md bg-lime text-black">
+          <span aria-hidden="true" className="flex size-6 items-center justify-center bg-lime text-black">
             <HomeIcon />
           </span>
           <span className="text-[15px] font-semibold tracking-tight">Household</span>
@@ -34,7 +34,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
                 <a
                   href={`#${r}`}
                   aria-current={current ? 'page' : undefined}
-                  className={`flex min-h-9 items-center gap-2.5 rounded-lg px-2.5 py-2 transition-colors ${
+                  className={`flex min-h-9 items-center gap-2.5 px-2.5 py-2 transition-colors ${
                     current
                       ? 'bg-white font-medium text-ink shadow-[0_0_0_1px_var(--color-card-ring)]'
                       : 'text-ink-2 hover:bg-white/60 hover:text-ink'
@@ -53,18 +53,18 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
             role="switch"
             aria-checked={night}
             onClick={toggle}
-            className="flex min-h-9 cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-2 text-left text-ink-2 transition-colors hover:bg-white/60 hover:text-ink"
+            className="flex min-h-9 cursor-pointer items-center gap-2.5 px-2.5 py-2 text-left text-ink-2 transition-colors hover:bg-white/60 hover:text-ink"
           >
             {night ? <MoonIcon /> : <SunIcon />}
             <span>Night mode</span>
             <span
               aria-hidden="true"
-              className={`ml-auto flex h-5 w-9 items-center rounded-full p-0.5 transition-colors duration-200 ${
+              className={`ml-auto flex h-5 w-9 items-center p-0.5 transition-colors duration-200 ${
                 night ? 'bg-accent' : 'bg-line-strong'
               }`}
             >
               <span
-                className={`size-4 rounded-full bg-white shadow-[0_1px_2px_rgb(0_0_0/0.2)] transition-transform duration-200 ${
+                className={`size-4 bg-white shadow-[0_1px_2px_rgb(0_0_0/0.2)] transition-transform duration-200 ${
                   night ? 'translate-x-4' : ''
                 }`}
               />
@@ -73,7 +73,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
           <div className="hidden items-center gap-2.5 p-2 md:flex">
             <span
               aria-hidden="true"
-              className="flex size-7 items-center justify-center rounded-full bg-line text-xs font-semibold text-ink-2"
+              className="flex size-7 items-center justify-center bg-line text-xs font-semibold text-ink-2"
             >
               FA
             </span>
@@ -84,7 +84,7 @@ export function AppShell({ route, children }: { route: Route; children: ReactNod
           </div>
         </div>
       </nav>
-      <main className="m-2 flex min-w-0 flex-1 flex-col rounded-[20px] bg-panel md:my-3 md:mr-3 md:ml-0">{children}</main>
+      <main className="m-2 flex min-w-0 flex-1 flex-col bg-panel md:my-3 md:mr-3 md:ml-0">{children}</main>
     </div>
   )
 }
