@@ -25,7 +25,6 @@ export function MappingPanel({
           <AiOrb />
           Column mapping
         </h3>
-        <span className="text-[13px] text-muted">Select a row to see why</span>
       </div>
 
       <div className="overflow-hidden bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">

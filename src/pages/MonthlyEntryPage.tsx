@@ -22,7 +22,6 @@ export function MonthlyEntryPage() {
     <div className="flex flex-col gap-8">
       <PageHeader
         title="Monthly entry"
-        description="Update balances and income once a month. Spending comes from your budget."
         actions={
           <>
             <Button variant="secondary" onClick={() => go('import')}>

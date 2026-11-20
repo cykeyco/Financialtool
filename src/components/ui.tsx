@@ -2,21 +2,21 @@ import { motion } from 'motion/react'
 import { useId, useState, type InputHTMLAttributes, type ReactNode } from 'react'
 import { num, parseMoney } from '../lib/format'
 
-/** Page title row: title + one-line description on the left, actions on the right. */
+/** Page title row: title on the left, actions on the right. */
 export function PageHeader({
   title,
   description,
   actions,
 }: {
   title: string
-  description: string
+  description?: string
   actions?: ReactNode
 }) {
   return (
     <header className="flex flex-wrap items-end justify-between gap-4">
       <div className="flex flex-col gap-1">
         <h1 className="text-[36px] leading-[1.05] font-semibold tracking-[-0.025em]">{title}</h1>
-        <p className="text-muted">{description}</p>
+        {description && <p className="text-muted">{description}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </header>

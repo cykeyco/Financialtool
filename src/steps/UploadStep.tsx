@@ -44,7 +44,7 @@ export function UploadStep({ onStart, focus }: { onStart: (file: ImportFile) => 
           {dragging ? 'Drop to start' : 'Drop a bank export here'}
         </h2>
         <p className="text-muted">
-          CSV or Excel. Columns are matched for you, and you review anything uncertain before import.
+          CSV or Excel
         </p>
       </div>
       <input

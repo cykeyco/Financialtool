@@ -28,7 +28,6 @@ export function ImportPage() {
         <div className="mx-auto flex max-w-[1120px] flex-col gap-8">
           <header className="flex flex-col gap-1">
             <h1 className="text-[36px] leading-[1.05] font-semibold tracking-[-0.025em]">Import data</h1>
-            <p className="text-muted">Bring in transactions from a bank export. Nothing is saved until you confirm.</p>
           </header>
 
           <Stepper current={STEP_INDEX[state.screen]} />
@@ -81,8 +80,8 @@ export function ImportPage() {
             <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3">
               <p className="text-[13px] text-muted" aria-live="polite">
                 {derived.pending > 0
-                  ? `Review ${derived.pending} ${derived.pending === 1 ? 'item' : 'items'} to continue. Nothing is saved until you import.`
-                  : 'Ready. You can undo this import for 30 days.'}
+                  ? `${derived.pending} left to review`
+                  : 'All reviewed'}
               </p>
               <div className="flex gap-2">
                 <Button variant="secondary" onClick={actions.reset}>
