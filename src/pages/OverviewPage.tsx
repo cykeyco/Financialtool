@@ -18,7 +18,6 @@ export function OverviewPage() {
     <div className="flex flex-col gap-10">
       <PageHeader
         title="Overview"
-        description="Your household finances at a glance."
         actions={
           <>
             <span className="inline-flex h-10 items-center border border-line-strong px-4 font-medium">
@@ -69,7 +68,7 @@ export function OverviewPage() {
       {/* This month in four numbers */}
       <section aria-label="This month" className="grid grid-cols-2 border-y border-line lg:grid-cols-4">
         {[
-          { label: 'Income', value: sek(d.income), sub: 'Salary and other income' },
+          { label: 'Income', value: sek(d.income) },
           { label: 'Spending', value: sek(d.spending), sub: `${pct(d.budgetUsed)} of budget` },
           { label: 'Saved', value: sek(d.saved), sub: `${pct(d.savingsRate)} savings rate` },
           {

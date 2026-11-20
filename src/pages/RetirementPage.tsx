@@ -31,7 +31,6 @@ export function RetirementPage() {
     <div className="flex flex-col gap-8">
       <PageHeader
         title="Retirement"
-        description="Where your savings and habits take you. All amounts are in today’s money."
       />
 
       <div className="grid items-start gap-8 [&>*]:min-w-0 lg:grid-cols-[320px_minmax(0,1fr)]">
@@ -168,7 +167,7 @@ export function RetirementPage() {
               })}
             </ul>
             <p className="text-xs text-subtle">
-              A simple estimate: steady returns, savings added yearly, no taxes or state pension. Not financial advice.
+              Estimate in today’s money. Assumes steady returns, no taxes and no state pension. Not financial advice.
             </p>
           </section>
         </div>

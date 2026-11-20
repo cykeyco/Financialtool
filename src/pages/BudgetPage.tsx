@@ -17,7 +17,6 @@ export function BudgetPage() {
     <div className="flex flex-col gap-10">
       <PageHeader
         title="Budget"
-        description="What you plan to spend each month, and what you are saving towards."
         actions={
           <>
             <span className="inline-flex h-10 items-center border border-line-strong px-4 font-medium">
@@ -46,7 +45,7 @@ export function BudgetPage() {
       <div className="grid items-start gap-8 [&>*]:min-w-0 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
         {/* Categories */}
         <section aria-labelledby="cats" className="flex flex-col gap-3">
-          <SectionTitle id="cats" aside="Select a category to edit">
+          <SectionTitle id="cats">
             Categories
           </SectionTitle>
           <div className="relative overflow-x-auto border border-line">
@@ -183,7 +182,7 @@ export function BudgetPage() {
                     value={selected.spent}
                     onChange={(spent) => dispatch({ type: 'category', id: selected.id, patch: { spent } })}
                   />
-                  <span className="text-xs text-subtle">Filled in by bank imports. Edit to correct.</span>
+                  <span className="text-xs text-subtle">From bank imports</span>
                 </div>
                 <TextArea
                   label="Note"
@@ -212,7 +211,7 @@ export function BudgetPage() {
                 animate={{ opacity: 1 }}
                 className="py-6 text-center text-muted"
               >
-                Select a category to edit it, or add a new one.
+                Select a category to edit
               </motion.p>
             )}
           </AnimatePresence>
@@ -284,10 +283,7 @@ function NewCategory({ onAdd, onCancel }: { onAdd: (name: string, budget: number
         if (name.trim()) onAdd(name.trim(), budget)
       }}
     >
-      <div className="flex flex-col gap-1">
-        <h2 className="text-[17px] font-semibold">New category</h2>
-        <p className="text-[13px] text-subtle">It is added to this month’s budget.</p>
-      </div>
+      <h2 className="text-[17px] font-semibold">New category</h2>
       <TextField label="Name" value={name} onChange={setName} />
       <MoneyField label="Monthly budget" value={budget} onChange={setBudget} />
       <div className="flex gap-2">

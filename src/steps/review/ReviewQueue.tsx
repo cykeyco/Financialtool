@@ -102,9 +102,6 @@ export function ReviewQueue(props: Props) {
             >
               <DoneBadge size={28} />
               <span className="font-medium">All reviewed</span>
-              <span className="text-[13px] text-muted">
-                Your choices will be remembered for future imports from this bank.
-              </span>
             </motion.div>
           )}
         </AnimatePresence>

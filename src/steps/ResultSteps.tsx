@@ -29,7 +29,6 @@ type DoneProps = {
 export function DoneStep({ imported, skipped, unreadable, rulesLearned, learned, onFinish, onUndo }: DoneProps) {
   const heading = useFocusOnMount<HTMLHeadingElement>()
   const rows = [
-    ['Imported', imported],
     ['Duplicates skipped', skipped],
     ['Unreadable rows left out', unreadable],
     ['New category rules learned', rulesLearned],
@@ -48,7 +47,7 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, learned,
             <span className="figure text-[56px] leading-none font-semibold tracking-[-0.035em]">
               <CountUp to={imported} />
             </span>
-            <span className="mt-2 text-[15px] font-normal text-muted">transactions added. Your overview and budget are updated.</span>
+            <span className="mt-2 text-[15px] font-normal text-muted">transactions added</span>
           </h2>
         </div>
 
@@ -95,7 +94,6 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, learned,
             Undo import
           </Button>
         </div>
-        <p className="text-xs text-subtle">You can also undo from Settings › Import history for 30 days.</p>
       </div>
     </section>
   )
