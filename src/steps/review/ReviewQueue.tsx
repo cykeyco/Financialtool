@@ -41,13 +41,13 @@ export function ReviewQueue(props: Props) {
           </span>
         </h3>
         {remaining > 0 && (
-          <Button size="sm" onClick={onAcceptAll}>
+          <Button size="sm" variant="secondary" onClick={onAcceptAll}>
             Accept all suggestions
           </Button>
         )}
       </div>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)]">
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">
         <AnimatePresence initial={false}>
           {duplicates.length > 0 && <GroupHeader key="h-dup" label="Possible duplicates" count={duplicates.length} />}
           {duplicates.map((d) => (

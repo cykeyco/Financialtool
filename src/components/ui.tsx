@@ -46,7 +46,7 @@ export function ProgressBar({
   tone?: 'ink' | 'accent' | 'warn'
   height?: number
 }) {
-  const color = { ink: 'bg-ink', accent: 'bg-accent', warn: 'bg-[#c27a00]' }[tone]
+  const color = { ink: 'bg-violet', accent: 'bg-accent', warn: 'bg-orange' }[tone]
   return (
     <div
       role="progressbar"
@@ -91,7 +91,7 @@ export function MoneyField({
       <label htmlFor={id} className={hideLabel ? 'sr-only' : 'text-[13px] text-muted'}>
         {label}
       </label>
-      <div className="flex h-10 items-center rounded-lg border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-[#d2d2ce]">
+      <div className="flex h-10 items-center rounded-lg border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-line-strong">
         <span className="mr-2 text-[13px] text-subtle" aria-hidden="true">
           SEK
         </span>
@@ -144,7 +144,7 @@ export function NumberField({
       <label htmlFor={id} className="text-[13px] text-muted">
         {label}
       </label>
-      <div className="flex h-10 items-center rounded-lg border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-[#d2d2ce]">
+      <div className="flex h-10 items-center rounded-lg border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-line-strong">
         <input
           id={id}
           type="number"
@@ -185,7 +185,7 @@ export function TextArea({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="resize-y rounded-lg border border-line bg-white px-3 py-2 text-base outline-none transition-colors placeholder:text-faint focus:border-ink hover:border-[#d2d2ce]"
+        className="resize-y rounded-lg border border-line bg-white px-3 py-2 text-base outline-none transition-colors placeholder:text-faint focus:border-ink hover:border-line-strong"
       />
     </div>
   )

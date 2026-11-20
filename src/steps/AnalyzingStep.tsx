@@ -26,7 +26,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
   return (
     <section
       aria-labelledby="analyzing-title"
-      className="relative grid min-h-[380px] overflow-hidden rounded-[20px] bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)] md:grid-cols-2"
+      className="relative grid min-h-[380px] overflow-hidden rounded-[20px] bg-white shadow-[0_0_0_1px_var(--color-card-ring)] md:grid-cols-2"
     >
       <FlowField phase={Math.min(progress, steps.length)} settled={finished} />
 
@@ -38,7 +38,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
           <p className="flex items-center gap-1.5 text-[13px] text-muted" aria-live="polite">
             <span
               aria-hidden="true"
-              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-flow-violet'}`}
+              className={`size-[5px] rounded-full ${finished ? 'bg-accent' : 'animate-pulse bg-violet'}`}
             />
             {status} · {file.rows} rows
           </p>
@@ -81,7 +81,7 @@ export function AnalyzingStep({ file, steps, progress }: Props) {
                         <AiOrb size={16} spinning />
                       </motion.span>
                     ) : (
-                      <span key="todo" className="size-4 rounded-full shadow-[inset_0_0_0_1px_#d4d4d8]" />
+                      <span key="todo" className="size-4 rounded-full shadow-[inset_0_0_0_1px_var(--color-line-strong)]" />
                     )}
                   </AnimatePresence>
                 </span>

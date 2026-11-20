@@ -37,7 +37,7 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, learned,
   return (
     <section
       aria-labelledby="done-title"
-      className="relative grid overflow-hidden rounded-[20px] bg-white shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)] md:grid-cols-2"
+      className="relative grid overflow-hidden rounded-[20px] bg-white shadow-[0_0_0_1px_var(--color-card-ring)] md:grid-cols-2"
     >
       <FlowField settled />
       <div className="relative flex flex-col gap-6 px-6 pt-48 pb-8 md:px-10 md:py-10">
@@ -105,7 +105,7 @@ export function UndoneStep({ removed, onRestart }: { removed: number; onRestart:
   return (
     <section
       aria-labelledby="undone-title"
-      className="flex max-w-xl flex-col gap-4 rounded-[20px] bg-white p-10 shadow-[0_1px_2px_rgb(0_0_0/0.03),0_0_0_1px_rgb(0_0_0/0.035)]"
+      className="flex max-w-xl flex-col gap-4 rounded-[20px] bg-white p-10 shadow-[0_0_0_1px_var(--color-card-ring)]"
     >
       <h2
         id="undone-title"

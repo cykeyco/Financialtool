@@ -5,7 +5,7 @@ import { go } from '../components/useHashRoute'
 import { compact, num, pct, sek, sekDelta } from '../lib/format'
 import { DAYS_LEFT_IN_MONTH, INVESTMENT_RETURN, NET_WORTH_HISTORY, useHousehold } from '../state/household'
 
-const ALLOC_COLORS = ['#1f4a3a', '#5e9a80', '#a9cbbb', '#d9d9d5']
+const ALLOC_COLORS = ['var(--color-accent)', 'var(--color-violet)', 'var(--color-orange)', 'var(--color-line-strong)']
 
 export function OverviewPage() {
   const { state, d } = useHousehold()
@@ -21,7 +21,7 @@ export function OverviewPage() {
         description="Your household finances at a glance."
         actions={
           <>
-            <span className="inline-flex h-10 items-center rounded-lg border border-line px-3 font-medium">
+            <span className="inline-flex h-10 items-center rounded-full border border-line-strong px-4 font-medium">
               {state.month}
             </span>
             <Button onClick={() => go('monthly')}>Add monthly entry</Button>

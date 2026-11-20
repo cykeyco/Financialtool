@@ -31,7 +31,7 @@ export function Stepper({ current }: { current: number }) {
                     ? 'bg-accent text-white'
                     : active
                       ? 'bg-ink text-white'
-                      : 'text-subtle shadow-[inset_0_0_0_1px_#d9d9d5]'
+                      : 'text-subtle shadow-[inset_0_0_0_1px_var(--color-line-strong)]'
                 }`}
               >
                 {done ? <CheckIcon width={10} height={10} /> : i + 1}
