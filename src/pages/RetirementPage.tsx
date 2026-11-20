@@ -22,7 +22,7 @@ export function RetirementPage() {
 
   // What-ifs: each shows its effect, and can be applied with one click.
   const whatIfs: { label: string; patch: Partial<Household['retirement']> }[] = [
-    { label: 'Save SEK 1,000 more a month', patch: { monthly: r.monthly + 1000 } },
+    { label: `Save ${sek(1000)} more a month`, patch: { monthly: r.monthly + 1000 } },
     { label: 'Retire 2 years later', patch: { retireAge: r.retireAge + 2 } },
     { label: 'Returns 1 point lower', patch: { returnPct: Math.round((r.returnPct - 1) * 10) / 10 } },
   ]
@@ -61,9 +61,9 @@ export function RetirementPage() {
           </div>
           <div className="flex flex-col gap-1.5">
             <span className="text-[13px] text-muted">Saved today</span>
-            <span className="flex h-10 items-center justify-between rounded-lg bg-canvas px-3">
-              <span className="text-[13px] text-subtle">SEK</span>
-              <span className="text-base">{num(d.netWorth)}</span>
+            <span className="flex h-10 items-center justify-end gap-1.5 rounded-lg bg-canvas px-3">
+              <span className="num text-base">{num(d.netWorth)}</span>
+              <span className="text-[13px] text-subtle">kr</span>
             </span>
             <span className="text-xs text-subtle">
               Your net worth, from{' '}
@@ -103,7 +103,7 @@ export function RetirementPage() {
               {onTrack ? 'On track' : 'Not on track yet'}
             </span>
             <h2 id="verdict" className="text-[clamp(26px,3.6vw,36px)] leading-tight font-semibold tracking-[-0.02em]">
-              {sek(k(s.atRetirement))} at {r.retireAge}
+              <span className="figure">{sek(k(s.atRetirement))}</span> at {r.retireAge}
             </h2>
             <p className="max-w-[60ch] text-muted">
               {onTrack ? (
@@ -113,8 +113,7 @@ export function RetirementPage() {
                 </>
               ) : (
                 <>
-                  That is {sek(k(-s.difference))} short of your goal. Saving about SEK{' '}
-                  {num(Math.ceil(extraMonthly / 100) * 100)} more a month would close the gap.
+                  That is {sek(k(-s.difference))} short of your goal. Saving about {sek(Math.ceil(extraMonthly / 100) * 100)} more a month would close the gap.
                 </>
               )}
             </p>
@@ -132,15 +131,15 @@ export function RetirementPage() {
           <dl className="grid grid-cols-3 border-y border-line">
             <div className="flex flex-col gap-1 py-4 pr-4">
               <dt className="text-[13px] text-muted">Progress today</dt>
-              <dd className="text-[22px] font-semibold">{pct(s.progressToday, 0)}</dd>
+              <dd className="figure text-[22px] font-semibold">{pct(s.progressToday, 0)}</dd>
             </div>
             <div className="flex flex-col gap-1 border-l border-line py-4 pl-5">
               <dt className="text-[13px] text-muted">Still to save</dt>
-              <dd className="text-[22px] font-semibold">{compact(s.gapToday)}</dd>
+              <dd className="figure text-[22px] font-semibold">{compact(s.gapToday)}</dd>
             </div>
             <div className="flex flex-col gap-1 border-l border-line py-4 pl-5">
               <dt className="text-[13px] text-muted">Years to go</dt>
-              <dd className="text-[22px] font-semibold">{s.years}</dd>
+              <dd className="figure text-[22px] font-semibold">{s.years}</dd>
             </div>
           </dl>
           <ProgressBar value={s.progressToday} label="Progress towards retirement goal today" tone="accent" />
@@ -158,7 +157,7 @@ export function RetirementPage() {
                     className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-line-soft px-4 py-3 last:border-0"
                   >
                     <span className="flex-1">{w.label}</span>
-                    <span className={`font-medium whitespace-nowrap ${delta >= 0 ? 'text-accent' : 'text-danger'}`}>
+                    <span className={`num font-medium whitespace-nowrap ${delta >= 0 ? 'text-accent' : 'text-danger'}`}>
                       {sekDelta(k(delta))}
                     </span>
                     <Button size="sm" variant="secondary" onClick={() => set(w.patch)}>

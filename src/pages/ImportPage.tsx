@@ -27,7 +27,7 @@ export function ImportPage() {
       <div className="flex-1 px-6 pt-10 pb-12 md:px-12">
         <div className="mx-auto flex max-w-[1120px] flex-col gap-8">
           <header className="flex flex-col gap-1">
-            <h1 className="text-[36px] leading-[1.1] font-light tracking-[-0.02em]">Import data</h1>
+            <h1 className="text-[36px] leading-[1.05] font-semibold tracking-[-0.025em]">Import data</h1>
             <p className="text-muted">Bring in transactions from a bank export. Nothing is saved until you confirm.</p>
           </header>
 

@@ -3,11 +3,12 @@ import { useEffect } from 'react'
 import { Button } from '../components/Button'
 import { AiOrb, FlowField } from '../components/Flow'
 import { useFocusOnMount } from '../components/useFocusOnMount'
+import { num } from '../lib/format'
 
 /** Counts up from zero once, as the money lands. */
 function CountUp({ to }: { to: number }) {
   const mv = useMotionValue(0)
-  const text = useTransform(mv, (v) => Math.round(v).toLocaleString('en-US'))
+  const text = useTransform(mv, (v) => num(v))
   useEffect(() => {
     const c = animate(mv, to, { duration: 1.2, ease: [0.2, 0.7, 0.2, 1] })
     return () => c.stop()
@@ -44,7 +45,7 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, learned,
         <div className="flex flex-col gap-1">
           <p className="text-[13px] text-muted">Import complete</p>
           <h2 id="done-title" ref={heading} tabIndex={-1} className="flex flex-col outline-none">
-            <span className="text-[56px] leading-none font-light tracking-[-0.03em]">
+            <span className="figure text-[56px] leading-none font-semibold tracking-[-0.035em]">
               <CountUp to={imported} />
             </span>
             <span className="mt-2 text-[15px] font-normal text-muted">transactions added. Your overview and budget are updated.</span>
@@ -61,7 +62,7 @@ export function DoneStep({ imported, skipped, unreadable, rulesLearned, learned,
               transition={{ delay: 0.3 + i * 0.06 }}
             >
               <dt className="text-muted">{label}</dt>
-              <dd className="text-right font-medium">{value}</dd>
+              <dd className="num text-right font-medium">{value}</dd>
             </motion.div>
           ))}
         </dl>

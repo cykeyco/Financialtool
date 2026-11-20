@@ -7,7 +7,7 @@ import { AUTO_MAPPINGS, UNCERTAIN_MAPPING } from '../../data/mockData'
 import type { MappingChoice } from '../../state/importFlow'
 
 const ROW = 'grid grid-cols-[1fr_16px_1fr_72px_28px] items-center gap-3'
-const pct = (n: number) => `${Math.round(n * 100)}%`
+const pct = (n: number) => `${Math.round(n * 100)}\u00a0%`
 
 export function MappingPanel({
   choice,

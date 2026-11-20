@@ -173,7 +173,7 @@ function ItemShell({
           <span className="font-medium">{name}</span>
           <span className="text-xs text-subtle">{meta}</span>
         </div>
-        <span className="font-medium whitespace-nowrap">{formatAmount(amount)}</span>
+        <span className="num font-medium whitespace-nowrap">{formatAmount(amount)}</span>
       </div>
       <AgentNote>{reason}</AgentNote>
       {children}

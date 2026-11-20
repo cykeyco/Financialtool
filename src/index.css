@@ -2,8 +2,10 @@
 
 /* Design tokens — one place to change the look. */
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Schibsted Grotesk: drawn for Scandinavian newspapers. IBM Plex Mono for money,
+     so every amount reads like a line on a bank statement. */
+  --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   /* ——— Palette ——————————————————————————————————————————— */
   --color-lime: #defd89;
@@ -110,7 +112,6 @@
     color-scheme: light;
   }
   html {
-    font-feature-settings: 'tnum' 1, 'cv11' 1; /* tabular numbers everywhere */
     -webkit-font-smoothing: antialiased;
   }
   body {
@@ -125,6 +126,17 @@
 /* ——— Flow: grainy moving gradient, violet → lime → orange ——————————————————————————————
    Rule: gradient means money in motion or AI at work. Data surfaces stay neutral. */
 @layer components {
+  /* Amounts, counts and percentages: the ledger face. */
+  /* Ledger columns, inputs and statement amounts: the monospace face. */
+  .num {
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
+  }
+  /* Headline figures: the text face (proportional, so commas stay tight). */
+  .figure {
+    font-variant-numeric: lining-nums;
+  }
+
   .flow-line {
     background: linear-gradient(90deg, var(--color-violet), var(--color-lime) 60%, var(--color-orange));
   }

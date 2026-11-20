@@ -31,7 +31,7 @@ export function BudgetPage() {
       {/* Headline: what's left, and what that means per day */}
       <section aria-labelledby="left" className="flex flex-col gap-4">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h2 id="left" className="text-[clamp(32px,4.5vw,44px)] leading-none font-semibold tracking-[-0.03em]">
+          <h2 id="left" className="figure text-[clamp(32px,4.5vw,44px)] leading-none font-semibold tracking-[-0.03em]">
             {sek(Math.abs(d.budgetLeft))}
           </h2>
           <span className="text-lg text-muted">{d.budgetLeft >= 0 ? 'left this month' : 'over budget'}</span>
@@ -39,7 +39,7 @@ export function BudgetPage() {
         <ProgressBar value={d.budgetUsed} label="Budget used" tone={d.budgetUsed > 1 ? 'warn' : 'ink'} height={10} />
         <p className="text-muted">
           {sek(d.spending)} of {sek(d.budget)} spent · {DAYS_LEFT_IN_MONTH} days left
-          {perDay > 0 && <> · about SEK {num(perDay)} a day</>}
+          {perDay > 0 && <> · about {sek(perDay)} a day</>}
         </p>
       </section>
 
@@ -99,10 +99,10 @@ export function BudgetPage() {
                             {c.name}
                           </button>
                         </th>
-                        <td className="border-b border-line-soft px-4 py-3 text-right">{num(c.budget)}</td>
-                        <td className="border-b border-line-soft px-4 py-3 text-right">{num(c.spent)}</td>
+                        <td className="num border-b border-line-soft px-4 py-3 text-right">{num(c.budget)}</td>
+                        <td className="num border-b border-line-soft px-4 py-3 text-right">{num(c.spent)}</td>
                         <td
-                          className={`border-b border-line-soft px-4 py-3 text-right whitespace-nowrap ${over ? 'font-medium text-warn' : ''}`}
+                          className={`num border-b border-line-soft px-4 py-3 text-right whitespace-nowrap ${over ? 'font-medium text-warn' : ''}`}
                         >
                           {over ? `Over ${num(c.spent - c.budget)}` : num(c.budget - c.spent)}
                         </td>
@@ -131,9 +131,9 @@ export function BudgetPage() {
                   <th scope="row" className="px-4 py-3 text-left">
                     Total
                   </th>
-                  <td className="px-4 py-3 text-right">{num(d.budget)}</td>
-                  <td className="px-4 py-3 text-right">{num(d.spending)}</td>
-                  <td className="px-4 py-3 text-right">{num(d.budgetLeft)}</td>
+                  <td className="num px-4 py-3 text-right">{num(d.budget)}</td>
+                  <td className="num px-4 py-3 text-right">{num(d.spending)}</td>
+                  <td className="num px-4 py-3 text-right">{num(d.budgetLeft)}</td>
                   <td className="px-4 py-3 text-xs font-normal text-subtle">{pct(d.budgetUsed)} used</td>
                 </tr>
               </tfoot>
@@ -250,7 +250,7 @@ function GoalCard({ goal }: { goal: Goal }) {
       </div>
       <ProgressBar value={goal.saved / goal.target} label={`${goal.name} progress`} tone="accent" />
       <p className="text-[13px] text-muted">
-        SEK {num(goal.monthly)} a month{months !== null && <> · reached by {done}</>}
+        {sek(goal.monthly)} a month{months !== null && <> · reached by {done}</>}
       </p>
     </div>
   )
