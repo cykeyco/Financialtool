@@ -47,7 +47,7 @@ export function ReviewQueue(props: Props) {
         )}
       </div>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">
+      <div className="overflow-hidden bg-white shadow-[0_0_0_1px_var(--color-card-ring)]">
         <AnimatePresence initial={false}>
           {duplicates.length > 0 && <GroupHeader key="h-dup" label="Possible duplicates" count={duplicates.length} />}
           {duplicates.map((d) => (
@@ -77,7 +77,7 @@ export function ReviewQueue(props: Props) {
                         key={opt}
                         type="button"
                         onClick={() => onDecide(c.id, opt)}
-                        className={`inline-flex h-[30px] cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13px] transition-[transform,border-color] active:scale-[0.97] ${
+                        className={`inline-flex h-[30px] cursor-pointer items-center gap-1.5 px-3 text-[13px] transition-[transform,border-color] active:scale-[0.97] ${
                           suggested ? 'flow-outline font-medium' : 'border border-line bg-white hover:border-faint'
                         }`}
                       >

@@ -54,11 +54,11 @@ export function ProgressBar({
       aria-valuenow={Math.round(value * 100)}
       aria-valuemin={0}
       aria-valuemax={100}
-      className="overflow-hidden rounded-full bg-track"
+      className="overflow-hidden bg-track"
       style={{ height }}
     >
       <motion.div
-        className={`h-full rounded-full ${color}`}
+        className={`h-full ${color}`}
         initial={false}
         animate={{ width: `${Math.min(1, Math.max(0, value)) * 100}%` }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -91,7 +91,7 @@ export function MoneyField({
       <label htmlFor={id} className={hideLabel ? 'sr-only' : 'text-[13px] text-muted'}>
         {label}
       </label>
-      <div className="flex h-10 items-center rounded-lg border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-line-strong">
+      <div className="flex h-10 items-center border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-line-strong">
         <input
           id={id}
           inputMode="numeric"
@@ -144,7 +144,7 @@ export function NumberField({
       <label htmlFor={id} className="text-[13px] text-muted">
         {label}
       </label>
-      <div className="flex h-10 items-center rounded-lg border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-line-strong">
+      <div className="flex h-10 items-center border border-line bg-white px-3 transition-colors focus-within:border-ink hover:border-line-strong">
         <input
           id={id}
           type="number"
@@ -185,7 +185,7 @@ export function TextArea({
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="resize-y rounded-lg border border-line bg-white px-3 py-2 text-base outline-none transition-colors placeholder:text-faint focus:border-ink hover:border-line-strong"
+        className="resize-y border border-line bg-white px-3 py-2 text-base outline-none transition-colors placeholder:text-faint focus:border-ink hover:border-line-strong"
       />
     </div>
   )

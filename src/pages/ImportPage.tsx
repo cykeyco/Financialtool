@@ -76,7 +76,7 @@ export function ImportPage() {
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="sticky bottom-0 rounded-b-[20px] border-t border-line bg-panel/90 px-6 py-4 backdrop-blur md:px-12"
+            className="sticky bottom-0 border-t border-line bg-panel/90 px-6 py-4 backdrop-blur md:px-12"
           >
             <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3">
               <p className="text-[13px] text-muted" aria-live="polite">

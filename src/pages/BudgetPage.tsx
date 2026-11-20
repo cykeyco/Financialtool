@@ -20,7 +20,7 @@ export function BudgetPage() {
         description="What you plan to spend each month, and what you are saving towards."
         actions={
           <>
-            <span className="inline-flex h-10 items-center rounded-full border border-line-strong px-4 font-medium">
+            <span className="inline-flex h-10 items-center border border-line-strong px-4 font-medium">
               {state.month}
             </span>
             <Button onClick={() => setEditing({ mode: 'new' })}>Add category</Button>
@@ -49,7 +49,7 @@ export function BudgetPage() {
           <SectionTitle id="cats" aside="Select a category to edit">
             Categories
           </SectionTitle>
-          <div className="relative overflow-x-auto rounded-xl border border-line">
+          <div className="relative overflow-x-auto border border-line">
             <table className="w-full min-w-[560px] border-collapse">
               <thead>
                 <tr className="bg-canvas text-left text-xs text-muted">
@@ -142,7 +142,7 @@ export function BudgetPage() {
         </section>
 
         {/* Editor */}
-        <aside aria-label="Category editor" className="rounded-2xl border border-line p-6 lg:sticky lg:top-6">
+        <aside aria-label="Category editor" className="border border-line p-6 lg:sticky lg:top-6">
           <AnimatePresence mode="wait" initial={false}>
             {editing.mode === 'new' ? (
               <motion.div key="new" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
@@ -239,7 +239,7 @@ function GoalCard({ goal }: { goal: Goal }) {
   const months = goal.monthly > 0 ? Math.ceil(left / goal.monthly) : null
   const done = new Date(2026, 10 + (months ?? 0), 1).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-line p-5">
+    <div className="flex flex-col gap-3 border border-line p-5">
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="font-medium">{goal.name}</h3>
         <span className="text-[13px] text-muted">{sek(goal.target)}</span>
@@ -267,7 +267,7 @@ function TextField({ label, value, onChange }: { label: string; value: string; o
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-10 rounded-lg border border-line px-3 text-base outline-none transition-colors focus:border-ink hover:border-line-strong"
+        className="h-10 border border-line px-3 text-base outline-none transition-colors focus:border-ink hover:border-line-strong"
       />
     </div>
   )

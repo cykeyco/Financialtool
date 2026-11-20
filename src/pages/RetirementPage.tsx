@@ -38,7 +38,7 @@ export function RetirementPage() {
         {/* Inputs */}
         <section
           aria-labelledby="assumptions"
-          className="flex flex-col gap-4 rounded-2xl border border-line p-6 lg:sticky lg:top-6"
+          className="flex flex-col gap-4 border border-line p-6 lg:sticky lg:top-6"
         >
           <SectionTitle id="assumptions">Your assumptions</SectionTitle>
           <div className="grid grid-cols-2 gap-4">
@@ -61,7 +61,7 @@ export function RetirementPage() {
           </div>
           <div className="flex flex-col gap-1.5">
             <span className="text-[13px] text-muted">Saved today</span>
-            <span className="flex h-10 items-center justify-end gap-1.5 rounded-lg bg-canvas px-3">
+            <span className="flex h-10 items-center justify-end gap-1.5 bg-canvas px-3">
               <span className="num text-base">{num(d.netWorth)}</span>
               <span className="text-[13px] text-subtle">kr</span>
             </span>
@@ -96,7 +96,7 @@ export function RetirementPage() {
           {/* Verdict first */}
           <section aria-labelledby="verdict" className="flex flex-col gap-2">
             <span
-              className={`w-fit rounded-full px-2.5 py-0.5 text-xs font-medium ${
+              className={`w-fit px-2.5 py-0.5 text-xs font-medium ${
                 onTrack ? 'bg-accent-bg text-accent' : 'bg-warn-pill text-warn'
               }`}
             >
@@ -147,7 +147,7 @@ export function RetirementPage() {
           {/* What if */}
           <section aria-labelledby="whatif" className="flex flex-col gap-3">
             <SectionTitle id="whatif">What if…</SectionTitle>
-            <ul className="overflow-hidden rounded-xl border border-line">
+            <ul className="overflow-hidden border border-line">
               {whatIfs.map((w) => {
                 const alt = summarise({ ...inputs, ...w.patch })
                 const delta = alt.atRetirement - s.atRetirement

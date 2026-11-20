@@ -40,7 +40,7 @@ export function MonthlyEntryPage() {
             <SectionTitle id="balances" aside={`Balances on 30 ${state.month}`}>
               Account balances
             </SectionTitle>
-            <div className="relative overflow-x-auto rounded-xl border border-line">
+            <div className="relative overflow-x-auto border border-line">
               <table className="w-full min-w-[520px] border-collapse">
                 <thead>
                   <tr className="bg-canvas text-left text-xs text-muted">
@@ -78,7 +78,7 @@ export function MonthlyEntryPage() {
                 </tbody>
               </table>
             </div>
-            <dl className="grid grid-cols-3 gap-4 rounded-xl bg-canvas px-5 py-4">
+            <dl className="grid grid-cols-3 gap-4 bg-canvas px-5 py-4">
               <div className="flex flex-col">
                 <dt className="text-xs text-muted">Assets</dt>
                 <dd className="text-lg font-semibold">
@@ -126,7 +126,7 @@ export function MonthlyEntryPage() {
         {/* Summary: sticky on wide screens so it stays in view while editing */}
         <aside
           aria-label="Month summary"
-          className="flex flex-col gap-6 rounded-2xl border border-line p-6 lg:sticky lg:top-6"
+          className="flex flex-col gap-6 border border-line p-6 lg:sticky lg:top-6"
         >
           <SectionTitle aside={state.savedAt ? `Saved ${state.savedAt}` : 'Not saved yet'}>{state.month}</SectionTitle>
           <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-3">
@@ -154,7 +154,7 @@ export function MonthlyEntryPage() {
             </div>
             <ProgressBar value={d.budgetUsed} label="Budget used" tone={d.budgetUsed > 1 ? 'warn' : 'ink'} />
             {d.overBudget.map((c) => (
-              <p key={c.id} className="rounded-lg bg-warn-bg px-3 py-2 text-[13px] text-warn">
+              <p key={c.id} className="bg-warn-bg px-3 py-2 text-[13px] text-warn">
                 {c.name} is {sek(c.spent - c.budget)} over budget.
               </p>
             ))}
@@ -182,7 +182,7 @@ export function MonthlyEntryPage() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 12 }}
-            className="fixed bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-lg bg-ink px-4 py-3 text-white shadow-lg"
+            className="fixed bottom-6 left-1/2 z-10 -translate-x-1/2 bg-ink px-4 py-3 text-white shadow-lg"
           >
             {toast}
           </motion.div>

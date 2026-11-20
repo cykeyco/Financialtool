@@ -19,7 +19,7 @@ const variants: Record<ButtonVariant, string> = {
   secondary:
     'bg-raised text-ink shadow-[inset_0_0_0_1px_var(--color-line-strong)] hover:bg-raised-hover active:bg-line-strong disabled:bg-line-soft disabled:text-faint disabled:cursor-not-allowed',
   ghost: 'bg-transparent text-ink-2 hover:bg-raised hover:text-ink',
-  link: 'bg-transparent text-accent underline underline-offset-3 decoration-accent/35 hover:decoration-accent !px-0 !h-auto !rounded-none',
+  link: 'bg-transparent text-accent underline underline-offset-3 decoration-accent/35 hover:decoration-accent !px-0 !h-auto',
 }
 const sizes: Record<Size, string> = {
   sm: 'h-8 px-3.5 text-[13px]',
@@ -35,7 +35,7 @@ export function Button({
   return (
     <button
       type="button"
-      className={`inline-flex items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap transition-colors duration-150 cursor-pointer ${sizes[size]} ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap transition-colors duration-150 cursor-pointer ${sizes[size]} ${variants[variant]} ${className}`}
       {...props}
     />
   )

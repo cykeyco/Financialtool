@@ -24,7 +24,7 @@ export function AiOrb({ size = 14, spinning = false }: { size?: number; spinning
   return (
     <span
       aria-hidden="true"
-      className={`flow-conic inline-block shrink-0 rounded-full ${spinning ? 'animate-spin [animation-duration:2.4s]' : ''}`}
+      className={`flow-conic inline-block shrink-0 ${spinning ? 'animate-spin [animation-duration:2.4s]' : ''}`}
       style={{
         width: size,
         height: size,

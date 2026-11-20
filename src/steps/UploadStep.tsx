@@ -27,13 +27,13 @@ export function UploadStep({ onStart, focus }: { onStart: (file: ImportFile) => 
       }}
       onDragLeave={() => setDragging(false)}
       onDrop={onDrop}
-      className={`flex flex-col items-center gap-4 rounded-2xl border-[1.5px] border-dashed px-8 py-16 text-center transition-colors duration-200 ${
+      className={`flex flex-col items-center gap-4 border-[1.5px] border-dashed px-8 py-16 text-center transition-colors duration-200 ${
         dragging ? 'border-accent bg-accent-bg' : 'border-line-strong'
       }`}
     >
       <span
         aria-hidden="true"
-        className={`flex size-12 items-center justify-center rounded-xl transition-transform duration-200 ${
+        className={`flex size-12 items-center justify-center transition-transform duration-200 ${
           dragging ? '-translate-y-1 bg-white' : 'bg-canvas'
         }`}
       >

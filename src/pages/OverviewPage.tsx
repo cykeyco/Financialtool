@@ -21,7 +21,7 @@ export function OverviewPage() {
         description="Your household finances at a glance."
         actions={
           <>
-            <span className="inline-flex h-10 items-center rounded-full border border-line-strong px-4 font-medium">
+            <span className="inline-flex h-10 items-center border border-line-strong px-4 font-medium">
               {state.month}
             </span>
             <Button onClick={() => go('monthly')}>Add monthly entry</Button>
@@ -98,7 +98,7 @@ export function OverviewPage() {
           <div
             role="img"
             aria-label={d.allocation.map((a) => `${a.label} ${pct(a.value / d.assets)}`).join(', ')}
-            className="flex h-2 gap-0.5 overflow-hidden rounded-full"
+            className="flex h-2 gap-0.5 overflow-hidden"
           >
             {d.allocation.map((a, i) => (
               <div key={a.label} style={{ width: `${(a.value / d.assets) * 100}%`, background: ALLOC_COLORS[i] }} />
@@ -110,7 +110,7 @@ export function OverviewPage() {
                 key={a.label}
                 className="grid grid-cols-[10px_1fr_auto_52px] items-center gap-2.5 border-b border-line-soft py-2 last:border-0"
               >
-                <span aria-hidden="true" className="size-2 rounded-[2px]" style={{ background: ALLOC_COLORS[i] }} />
+                <span aria-hidden="true" className="size-2" style={{ background: ALLOC_COLORS[i] }} />
                 <span>{a.label}</span>
                 <span className="num">{num(a.value)}</span>
                 <span className="num text-right text-subtle">{pct(a.value / d.assets)}</span>

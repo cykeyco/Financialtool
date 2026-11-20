@@ -2,6 +2,17 @@
 
 /* Design tokens — one place to change the look. */
 @theme {
+  /* No rounded corners anywhere: every radius token is zero. */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-4xl: 0;
+
   /* Schibsted Grotesk: drawn for Scandinavian newspapers. IBM Plex Mono for money,
      so every amount reads like a line on a bank statement. */
   --font-sans: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
@@ -14,7 +25,7 @@
 
   /* ——— Dark surfaces (lightest = closest to the viewer) ——————— */
   --color-backdrop: #121212; /* ground behind the app panel */
-  --color-panel: #1a1a1a; /* the rounded app panel */
+  --color-panel: #1a1a1a; /* the app panel */
   --color-white: #242424; /* cards. `bg-white` means "card surface" in this dark theme */
   --color-canvas: #2c2c2c; /* table headers, wells */
   --color-raised: #303030; /* secondary buttons, chips */
